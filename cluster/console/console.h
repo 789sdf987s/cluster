@@ -1,0 +1,25 @@
+#pragma once
+#include <Windows.h>
+#include <string>
+#include <iostream>
+#include "../utilities/utilities.h"
+
+#define COLOR_DARK_RED 4
+#define COLOR_DARK_YELLOW 6
+#define COLOR_DARK_WHITE 7
+#define COLOR_DARK_PURPLE 5
+#define MAX_LOG_SIZE 512
+
+class c_console {
+public:
+	bool create_console( const std::string& title );
+	void message( const char* message, ... );
+	void error( const char* error, ... );
+	void warning( const char* warning, ... );
+	void special( const char* special, ... );
+private:
+	const HANDLE std_out_handle = GetStdHandle( STD_OUTPUT_HANDLE );
+	char buffer[ MAX_LOG_SIZE + 1 ];
+};
+
+extern c_console g_console;
