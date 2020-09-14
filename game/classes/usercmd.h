@@ -2,10 +2,11 @@
 #include "../../cluster/vector/vector3.h"
 
 class c_usercmd {
+public:
 	int pad;
 	int command_number;
 	int tick_count;
-	vector3_t view_angles;
+	vector3_t viewangles;
 	vector3_t aim_direction;
 	float forwardmove;
 	float sidemove;
