@@ -1,4 +1,4 @@
-#include "cluster.h"
+﻿#include "cluster.h"
 
 THREAD_FUNCTION c_cluster::load( void* parameter ) {
 	g_cluster.module_handle = static_cast< HMODULE >( parameter );
@@ -12,6 +12,7 @@ THREAD_FUNCTION c_cluster::load( void* parameter ) {
 
 	if ( !g_interfaces.capture_all( ) ) {
 		g_console.error( "failed to capture interfaces" );
+		FreeLibraryAndExitThread( g_cluster.module_handle, EXIT_FAILURE );
 		return EXIT_FAILURE;
 	}
 
@@ -20,12 +21,14 @@ THREAD_FUNCTION c_cluster::load( void* parameter ) {
 	if ( !g_hooks.hook_all( ) ) {
 		g_console.error( "failed to hook functions" );
 		g_hooks.unhook_all( );
+		FreeLibraryAndExitThread( g_cluster.module_handle, EXIT_FAILURE );
 		return EXIT_FAILURE;
 	}
 
 	g_console.message( "hooked functions" );
 
 	g_cluster.is_loaded = true;
+	return EXIT_SUCCESS;
 }
 
 void c_cluster::unload( ) {
