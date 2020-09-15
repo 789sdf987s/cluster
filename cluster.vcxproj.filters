@@ -116,5 +116,17 @@
     <ClInclude Include="cluster\vector\vector3.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="game\interfaces\globals.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\entity_list.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\client_state.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\client.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

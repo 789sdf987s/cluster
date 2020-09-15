@@ -191,9 +191,13 @@
     <ClInclude Include="dependencies\minhook\MinHook.h" />
     <ClInclude Include="dependencies\minhook\trampoline.h" />
     <ClInclude Include="game\classes\usercmd.h" />
+    <ClInclude Include="game\interfaces\client.h" />
     <ClInclude Include="game\interfaces\client_mode.h" />
     <ClInclude Include="cluster\module_manager\module_manager.h" />
     <ClInclude Include="cluster\vector\vector3.h" />
+    <ClInclude Include="game\interfaces\client_state.h" />
+    <ClInclude Include="game\interfaces\entity_list.h" />
+    <ClInclude Include="game\interfaces\globals.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

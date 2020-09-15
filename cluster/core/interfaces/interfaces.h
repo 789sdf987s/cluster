@@ -1,13 +1,22 @@
 #pragma once
 #include <Windows.h>
 #include <string>
-#include "../../../game/interfaces/client_mode.h"
 #include "../../module_manager/module_manager.h"
 #include "../../console/console.h"
+
+#include "../../../game/interfaces/client_mode.h"
+#include "../../../game/interfaces/globals.h"
+#include "../../../game/interfaces/client_state.h"
+#include "../../../game/interfaces/entity_list.h"
+#include "../../../game/interfaces/client.h"
 
 class c_interfaces {
 public:
 	i_client_mode* client_mode;
+	i_globals* globals;
+	i_client_state* client_state;
+	i_entity_list* entity_list;
+	i_client* client;
 
 	bool capture_all( );
 

@@ -7,6 +7,8 @@
 #include <time.h>
 #include <iomanip>
 #include <sstream>
+#include <optional>
+#include "../module_manager/module_manager.h"
 
 #define THREAD_FUNCTION DWORD WINAPI
 #define MODULE_WAIT_CHECK_DELAY 25
@@ -17,6 +19,7 @@ public:
 	void wait_for_modules( const std::vector<std::string>& modules );
 	void sleep( unsigned int ms );
 	void critical_error( const std::string& message );
+	std::optional<std::uint8_t*> signature_scan( const std::string& module_name, const std::string& signature );
 
 	inline std::string get_time_formatted( const std::string& format ) {
 		time_t time = std::time( nullptr );
