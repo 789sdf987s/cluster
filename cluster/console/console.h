@@ -13,13 +13,17 @@
 class c_console {
 public:
 	bool create_console( const std::string& title );
+	void queue_close( );
+	void close_if_queued( );
 	void message( const char* message, ... );
 	void error( const char* error, ... );
 	void warning( const char* warning, ... );
 	void special( const char* special, ... );
+
 private:
 	const HANDLE std_out_handle = GetStdHandle( STD_OUTPUT_HANDLE );
 	char buffer[ MAX_LOG_SIZE + 1 ];
+	bool is_close_queued;
 };
 
 extern c_console g_console;

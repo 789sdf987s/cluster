@@ -1,14 +1,17 @@
 #pragma once
 #include <Windows.h>
 #include <string>
+#include <d3d9.h>
 #include "../../module_manager/module_manager.h"
 #include "../../console/console.h"
+#include "../../string_utilities/string_utilities.h"
 
 #include "../../../game/interfaces/client_mode.h"
 #include "../../../game/interfaces/globals.h"
 #include "../../../game/interfaces/client_state.h"
 #include "../../../game/interfaces/entity_list.h"
 #include "../../../game/interfaces/client.h"
+#include "../../../game/interfaces/panel.h"
 
 class c_interfaces {
 public:
@@ -17,6 +20,8 @@ public:
 	i_client_state* client_state;
 	i_entity_list* entity_list;
 	i_client* client;
+	i_panel* panel;
+	IDirect3DDevice9* direct_x;
 
 	bool capture_all( );
 
@@ -30,13 +35,15 @@ public:
 		const create_interface_fn create_interface = reinterpret_cast< create_interface_fn >( GetProcAddress( optional_module_handle.value( ), "CreateInterface" ) );
 
 		if ( !create_interface ) {
-			g_console.error( "failed to capture interface %s from %s", interface_name.c_str( ), module_name.c_str( ) );
+			g_console.error( "failed to capture %s from %s", g_string_utilities.to_lower( interface_name ).c_str( ), g_string_utilities.to_lower( module_name.c_str( ) ).c_str( ) );
 			return nullptr;
 		}
 
-		g_console.message( "captured interface %s from %s", interface_name.c_str( ), module_name.c_str( ) );
+		g_console.message( "captured %s from %s", g_string_utilities.to_lower( interface_name ).c_str( ), g_string_utilities.to_lower( module_name ).c_str( ) );
 		return static_cast< type* >( create_interface( interface_name.c_str( ), nullptr ) );
 	}
+
+
 };
 
 extern c_interfaces g_interfaces;

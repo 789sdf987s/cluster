@@ -4,10 +4,11 @@
 #include "string_utilities/string_utilities.h"
 #include "core/interfaces/interfaces.h"
 #include "core/hooks/hooks.h"
+#include "features/features.h"
 
 class c_cluster {
 public:
-	bool is_loaded;
+	bool is_hooked;
 	HMODULE module_handle;
 
 	static THREAD_FUNCTION load( void* parameter );

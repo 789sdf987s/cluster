@@ -11,6 +11,21 @@ bool c_console::create_console( const std::string& title ) {
 	return SetConsoleTitleA( title.c_str( ) );
 }
 
+void c_console::queue_close( ) {
+	this->is_close_queued = true;
+}
+
+void c_console::close_if_queued( ) {
+	if ( !this->is_close_queued )
+		return;
+
+	fclose( static_cast< _iobuf* >( __acrt_iob_func( 0 ) ) );
+	fclose( static_cast< _iobuf* >( __acrt_iob_func( 1 ) ) );
+	fclose( static_cast< _iobuf* >( __acrt_iob_func( 2 ) ) );
+
+	FreeConsole( );
+}
+
 void c_console::message( const char* message, ... ) {
 	if ( strlen( message ) > MAX_LOG_SIZE )
 		g_utilities.critical_error( "length of message to log is over MAX_LOG_SIZE" );
@@ -73,7 +88,7 @@ void c_console::special( const char* special, ... ) {
 	vsprintf_s( buffer, special, arguments );
 
 	SetConsoleTextAttribute( std_out_handle, COLOR_DARK_PURPLE );
-	std::cout << "[" << g_utilities.get_time_formatted( "%d.%m.%Y %H:%M:%S" ) << "] [" << GetCurrentThreadId( ) << "]: " << buffer << "\n";
+	std::cout << "[" << g_utilities.get_time_formatted( "%d.%m.%Y %H:%M:%S" ) << "] [" << GetCurrentThreadId( ) << "] " << buffer << "\n";
 	SetConsoleTextAttribute( std_out_handle, COLOR_DARK_WHITE );
 
 	va_end( arguments );

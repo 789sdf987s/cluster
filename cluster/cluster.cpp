@@ -18,21 +18,33 @@ THREAD_FUNCTION c_cluster::load( void* parameter ) {
 
 	g_console.message( "captured interfaces" );
 
+	g_features.menu.create_context( );
+	g_console.message( "created menu context" );
+
+	g_features.menu.setup_style( );
+	g_console.message( "styled menu" );
+
+	g_cluster.is_hooked = true;
 	if ( !g_hooks.hook_all( ) ) {
-		g_console.error( "failed to hook functions" );
-		g_hooks.unhook_all( );
+		g_console.error( "failed to place hooks" );
 		FreeLibraryAndExitThread( g_cluster.module_handle, EXIT_FAILURE );
 		return EXIT_FAILURE;
 	}
 
-	g_console.message( "hooked functions" );
+	g_console.message( "placed hooks" );
+	g_console.queue_close( );
 
-	g_cluster.is_loaded = true;
+	while ( !( ( GetAsyncKeyState( VK_END ) & 0x8000 ) && ( GetAsyncKeyState( VK_DELETE ) & 0x8000 ) ) )
+		g_utilities.sleep( 50 );
+
+	FreeLibraryAndExitThread( g_cluster.module_handle, EXIT_FAILURE );
 	return EXIT_SUCCESS;
 }
 
 void c_cluster::unload( ) {
-	if ( !g_cluster.is_loaded )
+	g_console.close_if_queued( );
+
+	if ( !g_cluster.is_hooked )
 		return;
 
 	g_hooks.unhook_all( );
