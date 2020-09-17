@@ -61,6 +61,10 @@ bool c_interfaces::capture_all( ) {
 	if ( !file_system )
 		return false;
 
+	model_render = this->capture_interface<i_model_render>( "engine.dll", "VEngineModel016" );
+	if ( !model_render )
+		return false;
+
 	return true;
 }
 

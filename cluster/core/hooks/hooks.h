@@ -4,6 +4,7 @@
 #include "../../../game/classes/usercmd.h"
 #include "../../../game/classes/view_setup.h"
 #include "../../../game/definitions.h"
+#include "../../../game/classes/models.h"
 
 #define REGISTERS void* ecx, void* edx
 #define CREATE_HOOK_HEADER(type, class_name, name, parameters, ...)  class class_name { \
@@ -33,6 +34,7 @@ public:
 	CREATE_HOOK_HEADER( void __fastcall, c_override_view, "override_view", REGISTERS, c_view_setup* view );
 	CREATE_HOOK_HEADER( void __fastcall, c_check_file_crcs_with_server, "check_file_crcs_with_server", REGISTERS );
 	CREATE_HOOK_HEADER( bool __fastcall, c_loose_file_allowed, "loose_file_allowed", REGISTERS );
+	CREATE_HOOK_HEADER( void __fastcall, c_draw_model_execute, "draw_model_execute", REGISTERS, void* ctx, void* state, model_render_info_t& info, matrix_t* bone_to_world );
 
 	class c_wnd_proc {
 	public:

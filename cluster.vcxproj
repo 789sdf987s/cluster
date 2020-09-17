@@ -163,6 +163,7 @@
     <ClCompile Include="cluster\console\console.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\check_file_crcs_with_server.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\create_move.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\draw_model_execute.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\end_scene.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\frame_stage_notify.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\loose_file_allowed.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="cluster\math\math.cpp" />
     <ClCompile Include="cluster\features\features.cpp" />
     <ClCompile Include="cluster\features\implementations\menu.cpp" />
+    <ClCompile Include="cluster\matrix\matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cluster\cluster.h" />
@@ -216,6 +218,7 @@
     <ClInclude Include="dependencies\minhook\MinHook.h" />
     <ClInclude Include="dependencies\minhook\trampoline.h" />
     <ClInclude Include="cluster\features\features.h" />
+    <ClInclude Include="game\classes\models.h" />
     <ClInclude Include="game\classes\usercmd.h" />
     <ClInclude Include="game\classes\view_setup.h" />
     <ClInclude Include="game\definitions.h" />
@@ -227,8 +230,11 @@
     <ClInclude Include="game\interfaces\entity_list.h" />
     <ClInclude Include="game\interfaces\globals.h" />
     <ClInclude Include="cluster\math\math.h" />
+    <ClInclude Include="game\interfaces\material.h" />
+    <ClInclude Include="game\interfaces\model_render.h" />
     <ClInclude Include="game\interfaces\panel.h" />
     <ClInclude Include="cluster\features\implementations\menu.h" />
+    <ClInclude Include="cluster\matrix\matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

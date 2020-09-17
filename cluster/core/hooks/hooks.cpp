@@ -31,6 +31,9 @@ bool c_hooks::hook_all( ) {
 	if ( !c_loose_file_allowed::create_hook( get_virtual( g_interfaces.file_system, 128 ) ) )
 		return false;
 
+	if ( !c_draw_model_execute::create_hook( get_virtual( g_interfaces.model_render, 21 ) ) )
+		return false;
+
 	c_wnd_proc::set( );
 
 	return MH_EnableHook( MH_ALL_HOOKS ) == MH_OK;

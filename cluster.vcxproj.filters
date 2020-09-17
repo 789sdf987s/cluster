@@ -111,6 +111,12 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\loose_file_allowed.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\draw_model_execute.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\matrix\matrix.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cluster\console\console.h">
@@ -219,6 +225,18 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="game\classes\view_setup.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\model_render.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\material.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\classes\models.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="cluster\matrix\matrix.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
