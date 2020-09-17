@@ -99,6 +99,18 @@
     <ClCompile Include="cluster\features\implementations\menu.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\frame_stage_notify.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\override_view.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\check_file_crcs_with_server.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\loose_file_allowed.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cluster\console\console.h">
@@ -201,6 +213,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="cluster\features\implementations\menu.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\definitions.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\classes\view_setup.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

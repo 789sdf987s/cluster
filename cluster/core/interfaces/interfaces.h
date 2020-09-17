@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <Windows.h>
 #include <string>
 #include <d3d9.h>
@@ -22,6 +22,7 @@ public:
 	i_client* client;
 	i_panel* panel;
 	IDirect3DDevice9* direct_x;
+	void* file_system;
 
 	bool capture_all( );
 

@@ -1,4 +1,4 @@
-#include "interfaces.h"
+﻿#include "interfaces.h"
 
 bool c_interfaces::capture_all( ) {
 	client = this->capture_interface<i_client>( "client.dll", "VClient018" );
@@ -56,6 +56,10 @@ bool c_interfaces::capture_all( ) {
 	}
 
 	g_console.message( "captured direct_x from shaderapidx9.dll" );
+
+	file_system = this->capture_interface<void*>( "filesystem_stdio.dll", "VFileSystem017" );
+	if ( !file_system )
+		return false;
 
 	return true;
 }

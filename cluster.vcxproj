@@ -161,8 +161,12 @@
   <ItemGroup>
     <ClCompile Include="cluster\cluster.cpp" />
     <ClCompile Include="cluster\console\console.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\check_file_crcs_with_server.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\create_move.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\end_scene.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\frame_stage_notify.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\loose_file_allowed.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\override_view.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\paint_traverse.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\reset.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\wnd_proc.cpp" />
@@ -213,6 +217,8 @@
     <ClInclude Include="dependencies\minhook\trampoline.h" />
     <ClInclude Include="cluster\features\features.h" />
     <ClInclude Include="game\classes\usercmd.h" />
+    <ClInclude Include="game\classes\view_setup.h" />
+    <ClInclude Include="game\definitions.h" />
     <ClInclude Include="game\interfaces\client.h" />
     <ClInclude Include="game\interfaces\client_mode.h" />
     <ClInclude Include="cluster\module_manager\module_manager.h" />
