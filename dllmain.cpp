@@ -6,9 +6,11 @@ BOOL APIENTRY DllMain( HMODULE module_handle, DWORD call_reason, LPVOID reserved
 	case DLL_PROCESS_ATTACH:
 		DisableThreadLibraryCalls( module_handle );
 		return g_utilities.create_thread( g_cluster.load, module_handle );
+
 	case DLL_PROCESS_DETACH:
 		g_cluster.unload( );
 		return TRUE;
+
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 		return FALSE;

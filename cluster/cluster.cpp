@@ -19,10 +19,12 @@ THREAD_FUNCTION c_cluster::load( void* parameter ) {
 	g_console.message( "captured interfaces" );
 
 	g_features.menu.create_context( );
+
 	g_console.message( "created menu context" );
 
-	g_features.menu.setup_style( );
-	g_console.message( "styled menu" );
+	g_features.menu.set_style( );
+
+	g_console.message( "set menu style" );
 
 	g_cluster.is_hooked = true;
 	if ( !g_hooks.hook_all( ) ) {

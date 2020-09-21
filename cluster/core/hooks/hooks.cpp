@@ -34,6 +34,15 @@ bool c_hooks::hook_all( ) {
 	if ( !c_draw_model_execute::create_hook( get_virtual( g_interfaces.model_render, 21 ) ) )
 		return false;
 
+	std::optional<std::uint8_t*> lock_cursor_signature = g_utilities.signature_scan( "vguimatsurface.dll", "80 3D ? ? ? ? 00 8B 91 A4 02 00 00 8B 0D ? ? ? ? C6 05 ? ? ? ? 01" );
+	if ( !lock_cursor_signature.has_value( ) ) {
+		g_console.error( "failed to hook lock_cursor" );
+		return false;
+	}
+
+	if ( !c_lock_cursor::create_hook( lock_cursor_signature.value( ) ) )
+		return false;
+
 	c_wnd_proc::set( );
 
 	return MH_EnableHook( MH_ALL_HOOKS ) == MH_OK;

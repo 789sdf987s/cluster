@@ -74,11 +74,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\debug\</OutDir>
     <IntDir>$(SolutionDir)output\temp\</IntDir>
+    <IncludePath>F:\Programme\dx sdk\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Programme\dx sdk\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)output\release\</OutDir>
     <IntDir>$(SolutionDir)output\temp\</IntDir>
+    <IncludePath>F:\Programme\dx sdk\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Programme\dx sdk\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -166,6 +170,7 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\draw_model_execute.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\end_scene.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\frame_stage_notify.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\lock_cursor.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\loose_file_allowed.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\override_view.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\paint_traverse.cpp" />
@@ -235,6 +240,7 @@
     <ClInclude Include="game\interfaces\panel.h" />
     <ClInclude Include="cluster\features\implementations\menu.h" />
     <ClInclude Include="cluster\matrix\matrix.h" />
+    <ClInclude Include="game\interfaces\surface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

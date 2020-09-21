@@ -13,6 +13,7 @@
 #include "../../../game/interfaces/client.h"
 #include "../../../game/interfaces/panel.h"
 #include "../../../game/interfaces/model_render.h"
+#include "../../../game/interfaces/surface.h"
 
 class c_interfaces {
 public:
@@ -25,6 +26,7 @@ public:
 	IDirect3DDevice9* direct_x;
 	void* file_system;
 	i_model_render* model_render;
+	i_surface* surface;
 
 	bool capture_all( );
 

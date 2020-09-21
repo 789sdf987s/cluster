@@ -35,6 +35,7 @@ public:
 	CREATE_HOOK_HEADER( void __fastcall, c_check_file_crcs_with_server, "check_file_crcs_with_server", REGISTERS );
 	CREATE_HOOK_HEADER( bool __fastcall, c_loose_file_allowed, "loose_file_allowed", REGISTERS );
 	CREATE_HOOK_HEADER( void __fastcall, c_draw_model_execute, "draw_model_execute", REGISTERS, void* ctx, void* state, model_render_info_t& info, matrix_t* bone_to_world );
+	CREATE_HOOK_HEADER( void __fastcall, c_lock_cursor, "lock_cursor", REGISTERS );
 
 	class c_wnd_proc {
 	public:

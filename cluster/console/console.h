@@ -21,7 +21,7 @@ public:
 	void special( const char* special, ... );
 
 private:
-	const HANDLE std_out_handle = GetStdHandle( STD_OUTPUT_HANDLE );
+	HANDLE std_out_handle = GetStdHandle( STD_OUTPUT_HANDLE );
 	char buffer[ MAX_LOG_SIZE + 1 ];
 	bool is_close_queued;
 };

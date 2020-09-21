@@ -65,6 +65,10 @@ bool c_interfaces::capture_all( ) {
 	if ( !model_render )
 		return false;
 
+	surface = this->capture_interface<i_surface>( "vguimatsurface.dll", "VGUI_Surface031" );
+	if ( !surface )
+		return false;
+
 	return true;
 }
 
