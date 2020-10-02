@@ -103,7 +103,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
@@ -176,6 +176,7 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\paint_traverse.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\reset.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\wnd_proc.cpp" />
+    <ClCompile Include="cluster\config_system\config_system.cpp" />
     <ClCompile Include="dependencies\imgui\dx9\imgui_impl_dx9.cpp" />
     <ClCompile Include="dependencies\imgui\imgui.cpp" />
     <ClCompile Include="dependencies\imgui\imgui_demo.cpp" />
@@ -197,15 +198,23 @@
     <ClCompile Include="cluster\math\math.cpp" />
     <ClCompile Include="cluster\features\features.cpp" />
     <ClCompile Include="cluster\features\implementations\menu.cpp" />
-    <ClCompile Include="cluster\matrix\matrix.cpp" />
+    <ClCompile Include="cluster\features\helpers\renderer.cpp" />
+    <ClCompile Include="cluster\features\implementations\visuals.cpp" />
+    <ClCompile Include="cluster\netvar_manager\netvar_manager.cpp" />
+    <ClCompile Include="cluster\hasher\hasher.cpp" />
+    <ClCompile Include="cluster\view_matrix\view_matrix.cpp" />
+    <ClCompile Include="cluster\globals\globals.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cluster\cluster.h" />
+    <ClInclude Include="cluster\color\color.h" />
     <ClInclude Include="cluster\utilities\utilities.h" />
     <ClInclude Include="cluster\console\console.h" />
     <ClInclude Include="cluster\string_utilities\string_utilities.h" />
     <ClInclude Include="cluster\core\interfaces\interfaces.h" />
     <ClInclude Include="cluster\core\hooks\hooks.h" />
+    <ClInclude Include="cluster\config_system\config_system.h" />
+    <ClInclude Include="cluster\vertex\vertex.h" />
     <ClInclude Include="dependencies\imgui\dx9\imgui_impl_dx9.h" />
     <ClInclude Include="dependencies\imgui\imconfig.h" />
     <ClInclude Include="dependencies\imgui\imgui.h" />
@@ -223,7 +232,10 @@
     <ClInclude Include="dependencies\minhook\MinHook.h" />
     <ClInclude Include="dependencies\minhook\trampoline.h" />
     <ClInclude Include="cluster\features\features.h" />
+    <ClInclude Include="game\classes\client_class.h" />
     <ClInclude Include="game\classes\models.h" />
+    <ClInclude Include="game\classes\entities.h" />
+    <ClInclude Include="game\classes\recv_props.h" />
     <ClInclude Include="game\classes\usercmd.h" />
     <ClInclude Include="game\classes\view_setup.h" />
     <ClInclude Include="game\definitions.h" />
@@ -232,6 +244,8 @@
     <ClInclude Include="cluster\module_manager\module_manager.h" />
     <ClInclude Include="cluster\vector\vector3.h" />
     <ClInclude Include="game\interfaces\client_state.h" />
+    <ClInclude Include="game\interfaces\debug_overlay.h" />
+    <ClInclude Include="game\interfaces\engine.h" />
     <ClInclude Include="game\interfaces\entity_list.h" />
     <ClInclude Include="game\interfaces\globals.h" />
     <ClInclude Include="cluster\math\math.h" />
@@ -241,6 +255,12 @@
     <ClInclude Include="cluster\features\implementations\menu.h" />
     <ClInclude Include="cluster\matrix\matrix.h" />
     <ClInclude Include="game\interfaces\surface.h" />
+    <ClInclude Include="cluster\features\helpers\renderer.h" />
+    <ClInclude Include="cluster\features\implementations\visuals.h" />
+    <ClInclude Include="cluster\netvar_manager\netvar_manager.h" />
+    <ClInclude Include="cluster\hasher\hasher.h" />
+    <ClInclude Include="cluster\view_matrix\view_matrix.h" />
+    <ClInclude Include="cluster\globals\globals.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

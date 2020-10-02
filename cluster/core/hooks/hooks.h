@@ -19,41 +19,41 @@
 																g_console.error( "failed to hook %s", name ); \
 															return success; \
 														} \
-													}
+													};
 
 class c_hooks {
 public:
-	bool hook_all( );
-	void unhook_all( );
+	bool hook_all();
+	void unhook_all();
 
-	CREATE_HOOK_HEADER( bool __fastcall, c_create_move, "create_move", REGISTERS, float input_sample_frametime, c_usercmd* cmd );
-	CREATE_HOOK_HEADER( void __fastcall, c_paint_traverse, "paint_traverse", REGISTERS, unsigned int panel, bool force_repaint, bool allow_force );
-	CREATE_HOOK_HEADER( long __fastcall, c_end_scene, "end_scene", REGISTERS, IDirect3DDevice9* device );
-	CREATE_HOOK_HEADER( long __fastcall, c_reset, "reset", REGISTERS, IDirect3DDevice9* device, D3DPRESENT_PARAMETERS* presentation_parameters );
-	CREATE_HOOK_HEADER( void __fastcall, c_frame_stage_notify, "frame_stage_notify", REGISTERS, client_frame_stage_t stage );
-	CREATE_HOOK_HEADER( void __fastcall, c_override_view, "override_view", REGISTERS, c_view_setup* view );
-	CREATE_HOOK_HEADER( void __fastcall, c_check_file_crcs_with_server, "check_file_crcs_with_server", REGISTERS );
-	CREATE_HOOK_HEADER( bool __fastcall, c_loose_file_allowed, "loose_file_allowed", REGISTERS );
-	CREATE_HOOK_HEADER( void __fastcall, c_draw_model_execute, "draw_model_execute", REGISTERS, void* ctx, void* state, model_render_info_t& info, matrix_t* bone_to_world );
-	CREATE_HOOK_HEADER( void __fastcall, c_lock_cursor, "lock_cursor", REGISTERS );
+	CREATE_HOOK_HEADER(bool __fastcall, c_create_move, "create_move", REGISTERS, float input_sample_frametime, c_usercmd* cmd);
+	CREATE_HOOK_HEADER(void __fastcall, c_paint_traverse, "paint_traverse", REGISTERS, unsigned int panel, bool force_repaint, bool allow_force);
+	CREATE_HOOK_HEADER(long __fastcall, c_end_scene, "end_scene", REGISTERS, IDirect3DDevice9* device);
+	CREATE_HOOK_HEADER(long __fastcall, c_reset, "reset", REGISTERS, IDirect3DDevice9* device, D3DPRESENT_PARAMETERS* presentation_parameters);
+	CREATE_HOOK_HEADER(void __fastcall, c_frame_stage_notify, "frame_stage_notify", REGISTERS, client_frame_stage_t stage);
+	CREATE_HOOK_HEADER(void __fastcall, c_override_view, "override_view", REGISTERS, c_view_setup* view);
+	CREATE_HOOK_HEADER(void __fastcall, c_check_file_crcs_with_server, "check_file_crcs_with_server", REGISTERS);
+	CREATE_HOOK_HEADER(bool __fastcall, c_loose_file_allowed, "loose_file_allowed", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_draw_model_execute, "draw_model_execute", REGISTERS, void* ctx, void* state, model_render_info_t& info, matrix_t* bone_to_world);
+	CREATE_HOOK_HEADER(void __fastcall, c_lock_cursor, "lock_cursor", REGISTERS);
 
 	class c_wnd_proc {
 	public:
-		static __forceinline void set( ) {
-			original = reinterpret_cast< WNDPROC >( SetWindowLongA( FindWindowA( "Valve001", NULL ), GWLP_WNDPROC, reinterpret_cast< LONG_PTR >( hook ) ) );
-			g_console.message( "set wnd_proc" );
+		static __forceinline void set() {
+			original = reinterpret_cast<WNDPROC>(SetWindowLongA(FindWindowA("Valve001", NULL), GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(hook)));
+			g_console.message("set wnd_proc");
 		}
 
-		static __forceinline void restore( ) {
-			SetWindowLongA( FindWindowA( "Valve001", NULL ), GWLP_WNDPROC, reinterpret_cast< LONG_PTR >( original ) );
+		static __forceinline void restore() {
+			SetWindowLongA(FindWindowA("Valve001", NULL), GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(original));
 		}
 
-		static LRESULT __stdcall hook( HWND hwnd, UINT message, WPARAM w_param, LPARAM l_param );
+		static LRESULT __stdcall hook(HWND hwnd, UINT message, WPARAM w_param, LPARAM l_param);
 		static inline WNDPROC original;
 	};
 
-	__forceinline void* get_virtual( void* _class, unsigned int index ) {
-		return reinterpret_cast< void* >( ( *static_cast< int** >( _class ) )[ index ] );
+	__forceinline void* get_virtual(void* _class, unsigned int index) {
+		return reinterpret_cast<void*>((*static_cast<int**>(_class))[index]);
 	}
 };
 

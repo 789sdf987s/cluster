@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include "../../cluster/vector/vector3.h"
 
-struct matrix_t;
+class matrix_t;
 
 struct model_t {
 	void* handle;
-	char name[ 260 ];
+	char name[260];
 	int load_flags;
 	int server_count;
 	int type;
@@ -18,7 +18,7 @@ struct model_t {
 struct model_render_info_t {
 	vector3_t origin;
 	vector3_t angles;
-	char pad[ 0x4 ];
+	char pad[0x4];
 	void* renderable;
 	const model_t* model;
 	const matrix_t* model_to_world;
@@ -31,7 +31,7 @@ struct model_render_info_t {
 	int hitboxset;
 	unsigned short instance;
 
-	model_render_info_t( ) {
+	model_render_info_t() {
 		model_to_world = NULL;
 		lighting_offset = NULL;
 		lighting_origin = NULL;
