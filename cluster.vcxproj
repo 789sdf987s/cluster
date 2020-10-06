@@ -74,15 +74,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\debug\</OutDir>
     <IntDir>$(SolutionDir)output\temp\</IntDir>
-    <IncludePath>F:\Programme\dx sdk\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Programme\dx sdk\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dx sdk\Include;F:\Programme\dx sdk\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dx sdk\Lib\x86;F:\Programme\dx sdk\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)output\release\</OutDir>
     <IntDir>$(SolutionDir)output\temp\</IntDir>
-    <IncludePath>F:\Programme\dx sdk\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Programme\dx sdk\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\dx sdk\Include;F:\Programme\dx sdk\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\dx sdk\Lib\x86;F:\Programme\dx sdk\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
