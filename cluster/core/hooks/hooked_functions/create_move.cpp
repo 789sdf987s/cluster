@@ -5,6 +5,10 @@
 
 bool __fastcall c_hooks::c_create_move::hook(REGISTERS, float input_sample_frametime, c_usercmd* cmd) {
 	original(ecx, edx, input_sample_frametime, cmd);
+
+	if (g_hooks.is_unhooking)
+		return false;
+
 	g_globals.local_player = reinterpret_cast<player_t*>(g_interfaces.entity_list->get_client_entity(g_interfaces.engine->get_local_player()));
 
 	if (g_features.menu.is_open) {

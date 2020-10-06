@@ -25,6 +25,7 @@ class c_hooks {
 public:
 	bool hook_all();
 	void unhook_all();
+	bool is_unhooking = false;
 
 	CREATE_HOOK_HEADER(bool __fastcall, c_create_move, "create_move", REGISTERS, float input_sample_frametime, c_usercmd* cmd);
 	CREATE_HOOK_HEADER(void __fastcall, c_paint_traverse, "paint_traverse", REGISTERS, unsigned int panel, bool force_repaint, bool allow_force);

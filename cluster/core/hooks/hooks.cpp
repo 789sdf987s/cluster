@@ -49,6 +49,9 @@ bool c_hooks::hook_all() {
 }
 
 void c_hooks::unhook_all() {
+	is_unhooking = true;
+	g_utilities.sleep(5);
+
 	c_wnd_proc::restore();
 
 	MH_DisableHook(MH_ALL_HOOKS);

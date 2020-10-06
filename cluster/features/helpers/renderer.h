@@ -55,7 +55,7 @@ private:
 public:
 	struct {
 		ID3DXFont* tahoma;
-		ID3DXFont* smallest_font;
+		ID3DXFont* smallest_pixel_7;
 	} fonts;
 
 	void initialize(IDirect3DDevice9* device);

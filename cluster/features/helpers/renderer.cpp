@@ -3,8 +3,8 @@
 void c_renderer::initialize(IDirect3DDevice9* device) {
 	this->device = device;
 
-	D3DXCreateFontA(device, 12, 0, FW_BOLD, 1, false, ANSI_CHARSET, OUT_DEFAULT_PRECIS, NONANTIALIASED_QUALITY, DEFAULT_PITCH, "Tahoma", &fonts.tahoma);
-	D3DXCreateFontA(device, 11, 0, FW_NORMAL, 1, false, ANSI_CHARSET, OUT_DEFAULT_PRECIS, NONANTIALIASED_QUALITY, DEFAULT_PITCH, "Smallest Pixel-7", &fonts.smallest_font);
+	D3DXCreateFontA(device, 12, 0, FW_EXTRABOLD, 1, false, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLEARTYPE_NATURAL_QUALITY, DEFAULT_PITCH, "Tahoma", &fonts.tahoma);
+	D3DXCreateFontA(device, 11, 0, FW_EXTRALIGHT, 1, false, ANSI_CHARSET, OUT_DEFAULT_PRECIS, NONANTIALIASED_QUALITY, DEFAULT_PITCH, "Smallest Pixel-7", &fonts.smallest_pixel_7);
 }
 
 void c_renderer::setup_state() {

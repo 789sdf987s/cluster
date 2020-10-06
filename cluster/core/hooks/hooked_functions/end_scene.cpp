@@ -18,7 +18,7 @@ long __fastcall c_hooks::c_end_scene::hook(REGISTERS, IDirect3DDevice9* device) 
 			gameoverlay_return_address = reinterpret_cast<std::uintptr_t>(_ReturnAddress());
 	}
 
-	if (gameoverlay_return_address != reinterpret_cast<std::uintptr_t>(_ReturnAddress()))
+	if (gameoverlay_return_address != reinterpret_cast<std::uintptr_t>(_ReturnAddress()) || g_hooks.is_unhooking)
 		return original(ecx, edx, device);
 
 	static std::once_flag menu_init_flag, render_init_flag;

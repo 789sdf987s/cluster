@@ -19,6 +19,7 @@ void c_visuals::populate_render_list() {
 		this->render_box(player, box);
 		this->render_name(player, box, info);
 		this->render_flags(player, box, info);
+		this->render_health(player, box);
 	}
 }
 
@@ -74,9 +75,9 @@ bool c_visuals::calculate_box(entity_t* entity, box_t& box) {
 }
 
 void c_visuals::render_box(entity_t* entity, box_t& box) {
-	g_renderer.render_rectangle(box.x - 1, box.y - 1, box.width + 2, box.height + 2, color_t(0, 0, 0, 200));
-	g_renderer.render_rectangle(box.x + 1, box.y + 1, box.width - 2, box.height - 2, color_t(0, 0, 0, 200));
-	g_renderer.render_rectangle(box.x, box.y, box.width, box.height, color_t(255, 255, 255, 255));
+	g_renderer.render_rectangle(box.x - 1, box.y - 1, box.width + 2, box.height + 2, color_t(0, 0, 0, 150));
+	g_renderer.render_rectangle(box.x + 1, box.y + 1, box.width - 2, box.height - 2, color_t(0, 0, 0, 150));
+	g_renderer.render_rectangle(box.x, box.y, box.width, box.height, color_t(255, 255, 255, 225));
 }
 
 void c_visuals::render_name(entity_t* entity, box_t& box, player_info_t& info) {
@@ -84,11 +85,15 @@ void c_visuals::render_name(entity_t* entity, box_t& box, player_info_t& info) {
 }
 
 void c_visuals::render_flags(player_t* player, box_t& box, player_info_t& info) {
-	text_size_t flag_size;
+	unsigned short flag_height = 0U;
 
 	if (info.fake_player)
-		flag_size = g_renderer.render_text(box.x - 2, box.y, HORIZONTAL_LEFT | VERTICAL_BOTTOM, OUTLINE, "bot", g_renderer.fonts.smallest_font, color_t(255, 255, 255, 255));
+		RENDER_FLAG("bot", color_t(255, 255, 255, 220));
 
-	unsigned short step = 0;
-	flag_size += g_renderer.render_text(box.x + box.width + 3, box.y, DEFAULT, OUTLINE, "$" + std::to_string(player->money()), g_renderer.fonts.smallest_font, color_t(255 / 2, 255, 255 / 2, 255));
+	RENDER_FLAG("$" + std::to_string(player->money()), color_t(255 / 2, 255, 255 / 2, 220));
+}
+
+void c_visuals::render_health(player_t* player, box_t& box) { //color_t(255 / 4, 255, 255 / 4)
+	g_renderer.render_filled_rectangle(box.x - 6, box.y - 1, 4, box.height + 2, color_t(0, 0, 0, 125));
+	g_renderer.render_filled_rectangle(box.x - 5, box.y + ((player->health() / 100) * box.height), 2, box.height, color_t(255 / 4, 255, 255 / 4));
 }
