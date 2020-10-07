@@ -1,13 +1,13 @@
-#pragma once
+﻿#pragma once
 #include <Windows.h>
 #include "../../cluster/matrix/matrix.h"
 #include "../../cluster/netvar_manager/netvar_manager.h"
 #include "../../cluster/hasher/hasher.h"
 
-#define INDEX_FROM(from, index, return_type, name) return_type name() { \
-															using original_fn = return_type(__thiscall*)(void*); \
-															return (*(original_fn**)from )[index]( from ); \
-														};
+#define INDEX_FROM(from, index, return_type, name) return_type& name() { \
+														using original_fn = return_type&(__thiscall*)(void*); \
+														return (*(original_fn**)from )[index]( from ); \
+													};
 
 #define INTERNAL_RELATIVE_OFFSET(return_type, offset, name) return_type name() { \
 														return reinterpret_cast<return_type>(uintptr_t(this) + offset); \
@@ -40,6 +40,11 @@ public:
 	NETVAR(BASE_ENTITY, "m_vecMins", mins, vector3_t);
 	NETVAR(BASE_ENTITY, "m_vecMaxs", maxs, vector3_t);
 	NETVAR(BASE_PLAYER, "m_vecOrigin", origin, vector3_t);
+	NETVAR(BASE_ENTITY, "m_bSpotted", is_spotted, bool);
+	NETVAR(BASE_PLAYER, "m_vecViewOffset[0]", view_offset, vector3_t);
+	NETVAR(BASE_PLAYER, "m_vecVelocity[0]", velocity, vector3_t);
+	NETVAR(BASE_PLAYER, "m_aimPunchAngle", aim_punch_angle, vector3_t);
+	NETVAR(BASE_PLAYER, "m_viewPunchAngle", view_punch_angle, vector3_t);
 
 	bool setup_bones(matrix_t* matrix, int max_bones, int mask, float setup_time) {
 		using original_fn = bool(__thiscall*)(void*, matrix_t*, int, int, float);
@@ -49,9 +54,20 @@ public:
 
 class player_t : public entity_t {
 public:
+	INDEX_FROM(this, 10, vector3_t, abs_origin);
 	NETVAR(CS_PLAYER, "m_fFlags", flags, int);
 	NETVAR(CS_PLAYER, "m_flSimulationTime", simulation_time, float);
 	NETVAR(CS_PLAYER, "m_iTeamNum", team, int);
 	NETVAR(CS_PLAYER, "m_iHealth", health, int);
 	NETVAR(CS_PLAYER, "m_iAccount", money, int);
+	NETVAR(CS_PLAYER, "m_bIsScoped", is_scoped, bool);
+	NETVAR(CS_PLAYER, "m_bIsDefusing", is_defusing, bool);
+	NETVAR(CS_PLAYER, "m_bHasDefuser", has_defuser, bool);
+	NETVAR(CS_PLAYER, "m_ArmorValue", armor, int);
+	NETVAR(CS_PLAYER, "m_bHasHelmet", has_helmet, bool);
+	NETVAR(CS_PLAYER, "m_bGunGameImmunity", is_immune, bool);
+	NETVAR(CS_PLAYER, "m_nTickBase", tick_base, int);
+	NETVAR(CS_PLAYER, "m_flDuckAmount", duck_amount, float);
+	NETVAR(CS_PLAYER, "m_flLowerBodyYawTarget", lower_body_yaw_target, float);
+	NETVAR(CS_PLAYER, "m_angEyeAngles", eye_angles, vector3_t);
 };

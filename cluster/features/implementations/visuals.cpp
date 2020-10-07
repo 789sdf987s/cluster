@@ -102,6 +102,18 @@ void c_visuals::render_flags(box_t& box, player_info_t& info) {
 		RENDER_FLAG("bot", color_ts(255, 255, 255, 225));
 
 	RENDER_FLAG("$" + std::to_string(player->money()), color_ts(255 / 2, 255, 255 / 2, 225));
+
+	if (player->armor())
+		RENDER_FLAG(player->has_helmet() ? "hk" : "k", color_ts(255, 255, 255, 225));
+
+	if (player->is_defusing())
+		RENDER_FLAG("defusing", color_ts(255, 255 / 2, 255 / 2, 225));
+
+	if (player->is_scoped())
+		RENDER_FLAG("scoped", color_ts(255, 255, 255 / 2, 225));
+
+	if (player->is_immune())
+		RENDER_FLAG("immune", color_ts(255, 255, 255, 225));
 }
 
 void c_visuals::render_health(box_t& box) {
@@ -112,5 +124,7 @@ void c_visuals::render_health(box_t& box) {
 	g_renderer.render_filled_rectangle(box.x - 6, box.y - 1, 4, box.height + 2, color_ts(0, 0, 0, 85));
 	g_renderer.render_rectangle(box.x - 6, box.y - 1, 4, box.height + 2, color_ts(0, 0, 0, 20));
 	g_renderer.render_filled_rectangle(box.x - 5, box.y + box.height - bar_height, 2, bar_height, color_ts(255 - (health_color_scaled / 2), health_color_scaled, 0, 225));
-	g_renderer.render_text(box.x - 7, box.y + box.height - bar_height, HORIZONTAL_LEFT | VERTICAL_CENTER, DROPSHADOW, std::to_string(health), g_renderer.fonts.smallest_pixel_7, color_ts(255, 255, 255, 225));
+
+	if (health != 100)
+		g_renderer.render_text(box.x - 7, box.y + box.height - bar_height, HORIZONTAL_LEFT | VERTICAL_CENTER, DROPSHADOW, std::to_string(health), g_renderer.fonts.smallest_pixel_7, color_ts(255, 255, 255, 225));
 }
