@@ -6,7 +6,7 @@ void c_visuals::populate_render_list() {
 
 	for (int i = 0; i < g_interfaces.engine->get_max_clients(); i++) {
 		player = reinterpret_cast<player_t*>(g_interfaces.entity_list->get_client_entity(i));
-		if (!player || !player->networkable() || !player->is_player() || /*player->team() == g_globals.local_player->team() ||*/ player->health() <= 0)
+		if (!player || !player->networkable() || !player->is_player() || player->team() == g_globals.local_player->team() || player->health() <= 0)
 			continue;
 
 		box_t box;
@@ -79,10 +79,10 @@ bool c_visuals::calculate_box(box_t& box) {
 			top = box_array[i].y;
 	}
 
-	box.x = static_cast<int>(left);
-	box.y = static_cast<int>(top);
-	box.width = static_cast<int>(right) - static_cast<int>(left);
-	box.height = static_cast<int>(bottom) - static_cast<int>(top);
+	box.x = std::clamp(static_cast<int>(left), -3080, 3920);
+	box.y = std::clamp(static_cast<int>(top), -3080, 3920);
+	box.height = std::clamp(static_cast<int>(bottom) - static_cast<int>(top), 0, 2080);
+	box.width = /*std::clamp(static_cast<int>(right) - static_cast<int>(left), 0, 2920)*/box.height / 2;
 	return true;
 }
 
