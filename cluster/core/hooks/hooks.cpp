@@ -70,6 +70,15 @@ bool c_hooks::hook_all() {
 	if (!c_convar_get_bool::create_hook(get_virtual(g_interfaces.convar->find_convar("sv_cheats"), 13)))
 		return false;
 
+	if (!c_do_post_screen_effects::create_hook(get_virtual(g_interfaces.client_mode, 44)))
+		return false;
+
+	if (!c_is_connected::create_hook(get_virtual(g_interfaces.engine, 27)))
+		return false;
+
+	if (!c_fire_events::create_hook(get_virtual(g_interfaces.engine, 59)))
+		return false;
+
 	c_wnd_proc::set();
 
 	return MH_EnableHook(MH_ALL_HOOKS) == MH_OK;

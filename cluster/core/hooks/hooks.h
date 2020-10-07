@@ -44,6 +44,9 @@ public:
 	CREATE_HOOK_HEADER(bool __fastcall, c_is_using_static_prop_debug, "is_using_static_prop_debug", REGISTERS);
 	CREATE_HOOK_HEADER(void __fastcall, c_fire_event, "fire_event", REGISTERS, i_game_event* event, bool done_broadcast);
 	CREATE_HOOK_HEADER(bool __fastcall, c_convar_get_bool, "convar_get_bool", REGISTERS);
+	CREATE_HOOK_HEADER(int __fastcall, c_do_post_screen_effects, "do_post_screen_effects", REGISTERS, c_view_setup* view_setup);
+	CREATE_HOOK_HEADER(bool __fastcall, c_is_connected, "is_connected", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_fire_events, "fire_events", REGISTERS);
 
 	class c_wnd_proc {
 	public:

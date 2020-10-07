@@ -156,6 +156,15 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\convar_get_bool.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\do_post_screen_effects.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\is_connected.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\fire_events.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cluster\console\console.h">

@@ -168,13 +168,16 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\check_file_crcs_with_server.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\convar_get_bool.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\create_move.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\do_post_screen_effects.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\draw_model_execute.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\end_scene.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\fire_event.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\fire_events.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\frame_stage_notify.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\get_color_modulation.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\get_screen_aspect_ratio.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\get_viemodel_fov.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\is_connected.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\is_using_static_prop_debug.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\lock_cursor.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\loose_file_allowed.cpp" />
