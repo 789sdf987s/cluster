@@ -4,8 +4,8 @@
 #include "../../cluster/netvar_manager/netvar_manager.h"
 #include "../../cluster/hasher/hasher.h"
 
-#define INDEX_FROM(from, index, return_type, name) return_type& name() { \
-														using original_fn = return_type&(__thiscall*)(void*); \
+#define INDEX_FROM(from, index, return_type, name) return_type name() { \
+														using original_fn = return_type(__thiscall*)(void*); \
 														return (*(original_fn**)from )[index]( from ); \
 													};
 

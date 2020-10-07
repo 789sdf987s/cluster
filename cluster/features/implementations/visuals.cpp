@@ -6,7 +6,7 @@ void c_visuals::populate_render_list() {
 
 	for (int i = 0; i < g_interfaces.engine->get_max_clients(); i++) {
 		player = reinterpret_cast<player_t*>(g_interfaces.entity_list->get_client_entity(i));
-		if (!player || !player->is_player() || player->team() == g_globals.local_player->team() || player->health() <= 0)
+		if (!player || !player->networkable() || !player->is_player() || /*player->team() == g_globals.local_player->team() ||*/ player->health() <= 0)
 			continue;
 
 		box_t box;
@@ -27,11 +27,12 @@ const color_t c_visuals::scale_color(const color_t& color) {
 	if (!player->is_dormant())
 		return color;
 
-	unsigned const short color_average = (color.r + color.g + color.b) / 3;
+	const float distance_between_players = (g_globals.local_player->origin() - player->origin()).length_2d();
+	const float modifier = std::clamp(distance_between_players / 1250.f, 0.f, 1.f);
+	unsigned const short color_average = static_cast<unsigned const short>(((color.r + color.g + color.b) / 3.f) * modifier);
 	unsigned const short alpha = std::clamp(color.a / 2, 0, 255);
-	unsigned const short distance = alpha - static_cast<unsigned const short>(std::clamp((player->origin() - g_globals.local_player->origin()).length_2d(), 0.f, static_cast<float>(alpha)));
 
-	return color_t(color_average, color_average, color_average, alpha - distance);
+	return color_t(color_average, color_average, color_average, static_cast<int>(alpha * modifier));
 }
 
 bool c_visuals::calculate_box(box_t& box) {
