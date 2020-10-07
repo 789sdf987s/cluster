@@ -166,10 +166,16 @@
     <ClCompile Include="cluster\cluster.cpp" />
     <ClCompile Include="cluster\console\console.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\check_file_crcs_with_server.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\convar_get_bool.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\create_move.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\draw_model_execute.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\end_scene.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\fire_event.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\frame_stage_notify.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\get_color_modulation.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\get_screen_aspect_ratio.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\get_viemodel_fov.cpp" />
+    <ClCompile Include="cluster\core\hooks\hooked_functions\is_using_static_prop_debug.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\lock_cursor.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\loose_file_allowed.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\override_view.cpp" />
@@ -233,6 +239,7 @@
     <ClInclude Include="dependencies\minhook\trampoline.h" />
     <ClInclude Include="cluster\features\features.h" />
     <ClInclude Include="game\classes\client_class.h" />
+    <ClInclude Include="game\classes\convar.h" />
     <ClInclude Include="game\classes\models.h" />
     <ClInclude Include="game\classes\entities.h" />
     <ClInclude Include="game\classes\recv_props.h" />
@@ -244,9 +251,11 @@
     <ClInclude Include="cluster\module_manager\module_manager.h" />
     <ClInclude Include="cluster\vector\vector3.h" />
     <ClInclude Include="game\interfaces\client_state.h" />
+    <ClInclude Include="game\interfaces\convar.h" />
     <ClInclude Include="game\interfaces\debug_overlay.h" />
     <ClInclude Include="game\interfaces\engine.h" />
     <ClInclude Include="game\interfaces\entity_list.h" />
+    <ClInclude Include="game\interfaces\game_event.h" />
     <ClInclude Include="game\interfaces\globals.h" />
     <ClInclude Include="cluster\math\math.h" />
     <ClInclude Include="game\interfaces\material.h" />

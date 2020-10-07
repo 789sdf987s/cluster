@@ -72,9 +72,6 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\reset.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="cluster\core\hooks\hooked_functions\wnd_proc.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="cluster\features\features.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -136,6 +133,27 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="cluster\globals\globals.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\get_viemodel_fov.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\get_color_modulation.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\get_screen_aspect_ratio.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\is_using_static_prop_debug.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\wnd_proc.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\fire_event.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\convar_get_bool.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -303,6 +321,15 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="game\interfaces\debug_overlay.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\game_event.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\convar.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\classes\convar.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

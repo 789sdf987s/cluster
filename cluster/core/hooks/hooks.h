@@ -5,6 +5,7 @@
 #include "../../../game/classes/view_setup.h"
 #include "../../../game/definitions.h"
 #include "../../../game/classes/models.h"
+#include "../../../game/interfaces/game_event.h"
 
 #define REGISTERS void* ecx, void* edx
 #define CREATE_HOOK_HEADER(type, class_name, name, parameters, ...)  class class_name { \
@@ -37,6 +38,12 @@ public:
 	CREATE_HOOK_HEADER(bool __fastcall, c_loose_file_allowed, "loose_file_allowed", REGISTERS);
 	CREATE_HOOK_HEADER(void __fastcall, c_draw_model_execute, "draw_model_execute", REGISTERS, void* ctx, void* state, model_render_info_t& info, matrix_t* bone_to_world);
 	CREATE_HOOK_HEADER(void __fastcall, c_lock_cursor, "lock_cursor", REGISTERS);
+	CREATE_HOOK_HEADER(float __fastcall, c_get_viewmodel_fov, "get_viewmodel_fov", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_get_color_modulation, "get_color_modulation", REGISTERS, float* r, float* g, float* b);
+	CREATE_HOOK_HEADER(void __fastcall, c_get_screen_aspect_ratio, "get_screen_aspect_ratio", REGISTERS, int w, int h);
+	CREATE_HOOK_HEADER(bool __fastcall, c_is_using_static_prop_debug, "is_using_static_prop_debug", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_fire_event, "fire_event", REGISTERS, i_game_event* event, bool done_broadcast);
+	CREATE_HOOK_HEADER(bool __fastcall, c_convar_get_bool, "convar_get_bool", REGISTERS);
 
 	class c_wnd_proc {
 	public:

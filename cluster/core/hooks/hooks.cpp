@@ -43,6 +43,33 @@ bool c_hooks::hook_all() {
 	if (!c_lock_cursor::create_hook(lock_cursor_signature))
 		return false;
 
+	if (!c_get_viewmodel_fov::create_hook(get_virtual(g_interfaces.client_mode, 35)))
+		return false;
+
+	std::uint8_t* get_color_modulation_signature = g_utilities.signature_scan("materialsystem.dll", "55 8B EC 83 EC ? 56 8B F1 8A 46");
+	if (!get_color_modulation_signature) {
+		g_console.error("failed to hook get_color_modulation");
+		return false;
+	}
+
+	if (!c_get_color_modulation::create_hook(get_color_modulation_signature))
+		return false;
+
+	if (!c_get_screen_aspect_ratio::create_hook(get_virtual(g_interfaces.engine, 101)))
+		return false;
+
+	std::uint8_t* is_using_static_prop_debug_signature = g_utilities.signature_scan("engine.dll", "8B 0D ? ? ? ? 81 F9 ? ? ? ? 75 ? A1 ? ? ? ? 35 ? ? ? ? EB ? 8B 01 FF 50 ? 83 F8 ? 0F 85 ? ? ? ? 8B 0D");
+	if (!is_using_static_prop_debug_signature) {
+		g_console.error("failed to hook is_using_static_prop_debug");
+		return false;
+	}
+
+	if (!c_is_using_static_prop_debug::create_hook(is_using_static_prop_debug_signature))
+		return false;
+
+	if (!c_convar_get_bool::create_hook(get_virtual(g_interfaces.convar->find_convar("sv_cheats"), 13)))
+		return false;
+
 	c_wnd_proc::set();
 
 	return MH_EnableHook(MH_ALL_HOOKS) == MH_OK;

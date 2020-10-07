@@ -77,6 +77,10 @@ bool c_interfaces::capture_all() {
 	if (!debug_overlay)
 		return false;
 
+	convar = this->capture_interface<i_convar>("vstdlib.dll", "VEngineCvar007");
+	if (!convar)
+		return false;
+
 	return true;
 }
 
