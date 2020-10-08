@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <cstdint>
 #include "../../cluster/vector/vector3.h"
 
@@ -94,5 +94,10 @@ public:
 	const char* get_level_name() {
 		using original_fn = const char* (__thiscall*)(i_engine*);
 		return (*(original_fn**)this)[53](this);
+	}
+
+	void* get_bsp_tree_query() {
+		using original_fn = void* (__thiscall*)(i_engine*);
+		return (*(original_fn**)this)[43](this);
 	}
 };

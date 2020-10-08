@@ -82,7 +82,7 @@ bool c_visuals::calculate_box(box_t& box) {
 	box.x = std::clamp(static_cast<int>(left), -3080, 3920);
 	box.y = std::clamp(static_cast<int>(top), -3080, 3920);
 	box.height = std::clamp(static_cast<int>(bottom) - static_cast<int>(top), 0, 2080);
-	box.width = /*std::clamp(static_cast<int>(right) - static_cast<int>(left), 0, 2920)*/box.height / 2;
+	box.width = std::clamp(static_cast<int>(right) - static_cast<int>(left), 0, 2920);
 	return true;
 }
 

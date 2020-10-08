@@ -47,6 +47,15 @@ public:
 	CREATE_HOOK_HEADER(int __fastcall, c_do_post_screen_effects, "do_post_screen_effects", REGISTERS, c_view_setup* view_setup);
 	CREATE_HOOK_HEADER(bool __fastcall, c_is_connected, "is_connected", REGISTERS);
 	CREATE_HOOK_HEADER(void __fastcall, c_fire_events, "fire_events", REGISTERS);
+	CREATE_HOOK_HEADER(bool __fastcall, c_is_hltv, "is_hltv", REGISTERS);
+	CREATE_HOOK_HEADER(int __fastcall, c_list_leaves_in_box, "list_leaves_in_box", REGISTERS, const vector3_t& mins, const vector3_t& maxs, unsigned short* list, int list_max);
+	CREATE_HOOK_HEADER(bool __fastcall, c_is_following_entity, "is_following_entity", REGISTERS);
+	CREATE_HOOK_HEADER(bool __fastcall, c_should_skip_animation_frame, "should_skip_animation_frame", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_standard_blending_rules, "standard_blending_rules", REGISTERS, void* studio_hdr, vector3_t* position, void* quaternion, float current_time, int bone_mask);
+	CREATE_HOOK_HEADER(void __fastcall, c_update_client_side_animations, "update_client_side_animations", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_do_procedural_foot_plant, "do_procedural_foot_plant", REGISTERS, int a1, int a2, int a3, int a4);
+	CREATE_HOOK_HEADER(bool __fastcall, c_setup_bones, "setup_bones", REGISTERS, matrix_t* bone_to_world_out, int max_bones, int bone_mask, float current_time);
+	CREATE_HOOK_HEADER(vector3_t* __fastcall, c_get_view_angles, "get_view_angles", REGISTERS);
 
 	class c_wnd_proc {
 	public:

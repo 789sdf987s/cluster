@@ -165,6 +165,33 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\fire_events.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\is_hltv.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\list_leaves_in_box.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\is_following_entity.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\should_skip_animation_frame.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\standard_blending_rules.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\update_client_side_animations.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\do_procedural_foot_plant.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\setup_bones.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="cluster\core\hooks\hooked_functions\get_view_angles.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cluster\console\console.h">
