@@ -17,6 +17,7 @@
 #include "../../../game/interfaces/engine.h"
 #include "../../../game/interfaces/debug_overlay.h"
 #include "../../../game/interfaces/convar.h"
+#include "../../../game//interfaces/prediction.h"
 
 class c_interfaces {
 public:
@@ -33,6 +34,7 @@ public:
 	i_engine* engine;
 	i_debug_overlay* debug_overlay;
 	i_convar* convar;
+	i_prediction* prediction;
 
 	bool capture_all();
 

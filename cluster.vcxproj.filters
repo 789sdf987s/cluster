@@ -368,5 +368,8 @@
     <ClInclude Include="game\classes\convar.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="game\interfaces\prediction.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -275,6 +275,7 @@
     <ClInclude Include="game\interfaces\panel.h" />
     <ClInclude Include="cluster\features\implementations\menu.h" />
     <ClInclude Include="cluster\matrix\matrix.h" />
+    <ClInclude Include="game\interfaces\prediction.h" />
     <ClInclude Include="game\interfaces\surface.h" />
     <ClInclude Include="cluster\features\helpers\renderer.h" />
     <ClInclude Include="cluster\features\implementations\visuals.h" />
