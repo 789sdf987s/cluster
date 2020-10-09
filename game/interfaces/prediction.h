@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../../cluster/vector/vector3.h"
-#include "../classes/entities.h"
-#include "../classes/usercmd.h"
+class vector3_t;
+class entity_t;
+class c_usercmd;
 
 class i_prediction {
 public:

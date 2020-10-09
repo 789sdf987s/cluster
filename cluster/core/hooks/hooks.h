@@ -10,15 +10,26 @@
 #define REGISTERS void* ecx, void* edx
 #define CREATE_HOOK_HEADER(type, class_name, name, parameters, ...)  class class_name { \
 													public: \
-														static type hook( parameters, __VA_ARGS__ ); \
-														static inline decltype( &hook ) original; \
-														static inline bool create_hook( void* to_hook ) { \
-															bool success = MH_CreateHook( to_hook, &hook, reinterpret_cast< void** >( &original )) == MH_OK; \
-															if ( success ) \
-																g_console.message( "hooked %s", name ); \
+														static type hook(parameters, __VA_ARGS__); \
+														static inline decltype(&hook) original; \
+														static inline bool create_hook(void* to_hook) { \
+															bool success = MH_CreateHook(to_hook, &hook, reinterpret_cast<void**>(&original)) == MH_OK; \
+															if (success) \
+																g_console.message("hooked %s", name); \
 															else \
-																g_console.error( "failed to hook %s", name ); \
+																g_console.error("failed to hook %s", name); \
 															return success; \
+														} \
+														static inline bool create_hook(const std::string& module_name, const std::string& signature) { \
+															std::uint8_t* scanned_signature = g_utilities.signature_scan(module_name, signature); \
+															if (!scanned_signature) { \
+																g_console.error("failed to hook %s", name); \
+																return false; \
+															} \
+															return create_hook(scanned_signature); \
+														} \
+														static inline bool create_hook(void* interface_, unsigned int index) { \
+															return create_hook(reinterpret_cast<void*>((*static_cast<int**>(interface_))[index])); \
 														} \
 													};
 
@@ -71,10 +82,6 @@ public:
 		static LRESULT __stdcall hook(HWND hwnd, UINT message, WPARAM w_param, LPARAM l_param);
 		static inline WNDPROC original;
 	};
-
-	__forceinline void* get_virtual(void* _class, unsigned int index) {
-		return reinterpret_cast<void*>((*static_cast<int**>(_class))[index]);
-	}
 };
 
 extern c_hooks g_hooks;
