@@ -35,6 +35,7 @@ public:
 	i_debug_overlay* debug_overlay;
 	i_convar* convar;
 	i_prediction* prediction;
+	std::uint8_t* player;
 
 	bool capture_all();
 

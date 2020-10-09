@@ -81,6 +81,20 @@ bool c_interfaces::capture_all() {
 	if (!convar)
 		return false;
 
+	prediction = this->capture_interface<i_prediction>("client.dll", "VClientPrediction001");
+	if (!prediction)
+		return false;
+
+	player = g_utilities.signature_scan("client.dll", "55 8B EC 83 E4 F8 83 EC 18 56 57 8B F9 89 7C 24 0C");
+	if (!player) {
+		g_console.error("failed to capture player");
+		return false;
+	}
+
+	player += 0x47;
+
+	g_console.message("captured player");
+
 	return true;
 }
 

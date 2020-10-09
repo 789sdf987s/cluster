@@ -6,6 +6,7 @@
 #include "../../../game/definitions.h"
 #include "../../../game/classes/models.h"
 #include "../../../game/interfaces/game_event.h"
+#include "../../../game/classes/bit_buffer.h"
 
 #define REGISTERS void* ecx, void* edx
 #define CREATE_HOOK_HEADER(type, class_name, name, parameters, ...)  class class_name { \
@@ -67,6 +68,12 @@ public:
 	CREATE_HOOK_HEADER(void __fastcall, c_do_procedural_foot_plant, "do_procedural_foot_plant", REGISTERS, int a1, int a2, int a3, int a4);
 	CREATE_HOOK_HEADER(bool __fastcall, c_setup_bones, "setup_bones", REGISTERS, matrix_t* bone_to_world_out, int max_bones, int bone_mask, float current_time);
 	CREATE_HOOK_HEADER(vector3_t* __fastcall, c_get_view_angles, "get_view_angles", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_run_command, "run_command", REGISTERS, entity_t* entity, c_usercmd* cmd, void* move_helper);
+	CREATE_HOOK_HEADER(bool __fastcall, c_write_user_cmd_to_buffer, "wirte_user_cmd_to_buffer", REGISTERS, int slot, bf_write* buffer, int from, int to, bool is_new_cmd);
+	CREATE_HOOK_HEADER(void __fastcall, c_calc_view_bob, "calc_view_bob", REGISTERS, vector3_t& eye_origin);
+	CREATE_HOOK_HEADER(void __fastcall, c_calc_view, "calc_view", REGISTERS, vector3_t& eye_origin, vector3_t& eye_angles, float& z_near, float& z_far, float& fov);
+	CREATE_HOOK_HEADER(bool __fastcall, c_should_interpolate, "should_interpolate", REGISTERS);
+	CREATE_HOOK_HEADER(void __fastcall, c_play_step_sound, "play_step_sound", REGISTERS, vector3_t& origin, void* surface, float volume, bool force);
 
 	class c_wnd_proc {
 	public:

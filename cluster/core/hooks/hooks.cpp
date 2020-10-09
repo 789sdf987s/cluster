@@ -4,14 +4,6 @@ bool c_hooks::hook_all() {
 	if (MH_Initialize() != MH_OK)
 		return false;
 
-	std::uint8_t* player_vtable = g_utilities.signature_scan("client.dll", "55 8B EC 83 E4 F8 83 EC 18 56 57 8B F9 89 7C 24 0C");
-	if (!player_vtable) {
-		g_console.error("failed to find player vtable");
-		return false;
-	}
-
-	player_vtable += 0x47;
-
 	if (!c_create_move::create_hook(g_interfaces.client_mode, 24))
 		return false;
 
@@ -69,16 +61,16 @@ bool c_hooks::hook_all() {
 	if (!c_list_leaves_in_box::create_hook(g_interfaces.engine->get_bsp_tree_query(), 6))
 		return false;
 
-	if (!c_is_following_entity::create_hook(player_vtable, 177))
+	if (!c_is_following_entity::create_hook(g_interfaces.player, 177))
 		return false;
 
 	if (!c_should_skip_animation_frame::create_hook("client.dll", "57 8B F9 8B 07 8B 80 ? ? ? ? FF D0 84 C0 75 02 5F C3"))
 		return false;
 
-	if (!c_standard_blending_rules::create_hook(player_vtable, 205))
+	if (!c_standard_blending_rules::create_hook(g_interfaces.player, 205))
 		return false;
 
-	if (!c_update_client_side_animations::create_hook(player_vtable, 223))
+	if (!c_update_client_side_animations::create_hook(g_interfaces.player, 223))
 		return false;
 
 	if (!c_do_procedural_foot_plant::create_hook("client.dll", "55 8B EC 83 E4 F0 83 EC 78 56 8B F1 57 8B 56 60"))
@@ -88,6 +80,21 @@ bool c_hooks::hook_all() {
 		return false;
 
 	if (!c_get_view_angles::create_hook("client.dll", "56 8B F1 85 F6 74 32"))
+		return false;
+
+	if (!c_run_command::create_hook(g_interfaces.prediction, 19))
+		return false;
+
+	if (!c_calc_view_bob::create_hook(g_interfaces.player, 281))
+		return false;
+
+	if (!c_calc_view::create_hook("client.dll", "E8 ? ? ? ? 80 BE ? ? ? ? ? 0F 84 ? ? ? ? 83 BE ? ? ? ? ? 0F 84 ? ? ? ? 80 BE ? ? ? ? ?"))
+		return false;
+
+	if (!c_should_interpolate::create_hook("client.dll", "F6 81 ? ? ? ? ? 74 2F"))
+		return false;
+
+	if (!c_play_step_sound::create_hook("client.dll", "55 8B EC 8B 45 18 81 EC ? ? ? ?"))
 		return false;
 
 	c_wnd_proc::set();
