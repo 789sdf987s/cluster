@@ -17,7 +17,9 @@
 #include "../../../game/interfaces/engine.h"
 #include "../../../game/interfaces/debug_overlay.h"
 #include "../../../game/interfaces/convar.h"
-#include "../../../game//interfaces/prediction.h"
+#include "../../../game/interfaces/prediction.h"
+#include "../../../game/interfaces/input.h"
+#include "../../../game/interfaces/trace.h"
 
 class c_interfaces {
 public:
@@ -36,6 +38,9 @@ public:
 	i_convar* convar;
 	i_prediction* prediction;
 	std::uint8_t* player;
+	i_input* input;
+	i_trace* trace;
+
 
 	bool capture_all();
 

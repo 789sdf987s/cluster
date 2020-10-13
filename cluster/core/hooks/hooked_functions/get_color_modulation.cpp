@@ -7,7 +7,7 @@ void __fastcall c_hooks::c_get_color_modulation::hook(REGISTERS, float* r, float
 
 	original(ecx, edx, r, g, b);
 
-	const auto material = reinterpret_cast<i_material*>(ecx);
+	const i_material* material = reinterpret_cast<i_material*>(ecx);
 
 	if (!material)
 		return;

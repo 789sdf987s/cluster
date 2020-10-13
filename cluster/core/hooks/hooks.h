@@ -14,17 +14,17 @@
 														static type hook(parameters, __VA_ARGS__); \
 														static inline decltype(&hook) original; \
 														static inline bool create_hook(void* to_hook) { \
-															bool success = MH_CreateHook(to_hook, &hook, reinterpret_cast<void**>(&original)) == MH_OK; \
-															if (success) \
+															MH_STATUS success = MH_CreateHook(to_hook, &hook, reinterpret_cast<void**>(&original)); \
+															if (success == MH_OK) \
 																g_console.message("hooked %s", name); \
 															else \
-																g_console.error("failed to hook %s", name); \
-															return success; \
+																g_console.error("failed to hook %s (%s)", name, MH_StatusToString(success)); \
+															return success == MH_OK; \
 														} \
 														static inline bool create_hook(const std::string& module_name, const std::string& signature) { \
 															std::uint8_t* scanned_signature = g_utilities.signature_scan(module_name, signature); \
 															if (!scanned_signature) { \
-																g_console.error("failed to hook %s", name); \
+																g_console.error("failed to find signature to hook %s", name); \
 																return false; \
 															} \
 															return create_hook(scanned_signature); \

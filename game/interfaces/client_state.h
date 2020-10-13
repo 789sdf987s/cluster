@@ -1,6 +1,8 @@
 #pragma once
 #include "../../cluster/vector/vector3.h"
 
+class event_info_t;
+
 class i_client_state {
 public:
 	char u0[156];
@@ -38,5 +40,5 @@ public:
 	char u8[80];
 	vector3_t view_angles;
 	char u9[208];
-	void* events;
+	event_info_t* events;
 };

@@ -204,10 +204,10 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\calc_view.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="cluster\core\hooks\hooked_functions\should_interpolate.cpp">
+    <ClCompile Include="cluster\core\hooks\hooked_functions\play_step_sound.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="cluster\core\hooks\hooked_functions\play_step_sound.cpp">
+    <ClCompile Include="cluster\features\implementations\thirdperson.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -390,6 +390,21 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="game\classes\bit_buffer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\classes\event_info.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="cluster\features\helpers\weapon_font.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\input.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="cluster\features\implementations\thirdperson.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="game\interfaces\trace.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

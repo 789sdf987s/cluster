@@ -4,5 +4,5 @@ bool __fastcall c_hooks::c_write_user_cmd_to_buffer::hook(REGISTERS, int slot, b
 	if (g_hooks.is_unhooking)
 		return original(ecx, edx, slot, buffer, from, to, is_new_cmd);
 
-	original(ecx, edx, slot, buffer, from, to, is_new_cmd);
+	return original(ecx, edx, slot, buffer, from, to, is_new_cmd);
 }

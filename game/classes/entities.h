@@ -45,6 +45,7 @@ public:
 	NETVAR(BASE_PLAYER, "m_vecVelocity[0]", velocity, vector3_t);
 	NETVAR(BASE_PLAYER, "m_aimPunchAngle", aim_punch_angle, vector3_t);
 	NETVAR(BASE_PLAYER, "m_viewPunchAngle", view_punch_angle, vector3_t);
+	NETVAR(BASE_ENTITY, "m_fEffects", effects, int);
 
 	bool setup_bones(matrix_t* matrix, int max_bones, int mask, float setup_time) {
 		using original_fn = bool(__thiscall*)(void*, matrix_t*, int, int, float);

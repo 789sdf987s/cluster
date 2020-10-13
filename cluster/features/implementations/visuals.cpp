@@ -87,8 +87,8 @@ bool c_visuals::calculate_box(box_t& box) {
 }
 
 void c_visuals::render_box(box_t& box) {
-	g_renderer.render_rectangle(box.x - 1, box.y - 1, box.width + 2, box.height + 2, color_ts(0, 0, 0, 150));
-	g_renderer.render_rectangle(box.x + 1, box.y + 1, box.width - 2, box.height - 2, color_ts(0, 0, 0, 150));
+	g_renderer.render_rectangle(box.x - 1, box.y - 1, box.width + 2, box.height + 2, color_ts(0, 0, 0, 130));
+	g_renderer.render_rectangle(box.x + 1, box.y + 1, box.width - 2, box.height - 2, color_ts(0, 0, 0, 130));
 	g_renderer.render_rectangle(box.x, box.y, box.width, box.height, color_ts(255, 255, 255, 225));
 }
 
@@ -122,7 +122,7 @@ void c_visuals::render_health(box_t& box) {
 	const unsigned short health_color_scaled = static_cast<const unsigned short>(health * 2.55f);
 	const unsigned short bar_height = static_cast<const unsigned short>(box.height * (health / 100.f));
 
-	g_renderer.render_filled_rectangle(box.x - 6, box.y - 1, 4, box.height + 2, color_ts(0, 0, 0, 85));
+	g_renderer.render_filled_rectangle(box.x - 6, box.y - 1, 4, box.height + 2, color_ts(0, 0, 0, 80));
 	g_renderer.render_rectangle(box.x - 6, box.y - 1, 4, box.height + 2, color_ts(0, 0, 0, 20));
 	g_renderer.render_filled_rectangle(box.x - 5, box.y + box.height - bar_height, 2, bar_height, color_ts(255 - (health_color_scaled / 2), health_color_scaled, 0, 225));
 

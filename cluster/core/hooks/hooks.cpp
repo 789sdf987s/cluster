@@ -85,17 +85,14 @@ bool c_hooks::hook_all() {
 	if (!c_run_command::create_hook(g_interfaces.prediction, 19))
 		return false;
 
-	if (!c_calc_view_bob::create_hook(g_interfaces.player, 281))
-		return false;
+	//if (!c_calc_view_bob::create_hook(g_interfaces.player, 279))
+	//	return false;
 
-	if (!c_calc_view::create_hook("client.dll", "E8 ? ? ? ? 80 BE ? ? ? ? ? 0F 84 ? ? ? ? 83 BE ? ? ? ? ? 0F 84 ? ? ? ? 80 BE ? ? ? ? ?"))
-		return false;
+	//if (!c_calc_view::create_hook("client.dll", "E8 ? ? ? ? 80 BE ? ? ? ? ? 0F 84 ? ? ? ? 83 BE ? ? ? ? ? 0F 84 ? ? ? ? 80 BE ? ? ? ? ?"))
+	//	return false;
 
-	if (!c_should_interpolate::create_hook("client.dll", "F6 81 ? ? ? ? ? 74 2F"))
-		return false;
-
-	if (!c_play_step_sound::create_hook("client.dll", "55 8B EC 8B 45 18 81 EC ? ? ? ?"))
-		return false;
+	//if (!c_play_step_sound::create_hook("client.dll", "55 8B EC 8B 45 18 81 EC ? ? ? ?"))
+	//	return false;
 
 	c_wnd_proc::set();
 

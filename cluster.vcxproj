@@ -194,7 +194,6 @@
     <ClCompile Include="cluster\core\hooks\hooked_functions\reset.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\run_command.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\setup_bones.cpp" />
-    <ClCompile Include="cluster\core\hooks\hooked_functions\should_interpolate.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\should_skip_animation_frame.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\standard_blending_rules.cpp" />
     <ClCompile Include="cluster\core\hooks\hooked_functions\update_client_side_animations.cpp" />
@@ -228,10 +227,12 @@
     <ClCompile Include="cluster\hasher\hasher.cpp" />
     <ClCompile Include="cluster\view_matrix\view_matrix.cpp" />
     <ClCompile Include="cluster\globals\globals.cpp" />
+    <ClCompile Include="cluster\features\implementations\thirdperson.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cluster\cluster.h" />
     <ClInclude Include="cluster\color\color.h" />
+    <ClInclude Include="cluster\features\helpers\weapon_font.h" />
     <ClInclude Include="cluster\utilities\utilities.h" />
     <ClInclude Include="cluster\console\console.h" />
     <ClInclude Include="cluster\string_utilities\string_utilities.h" />
@@ -259,6 +260,7 @@
     <ClInclude Include="game\classes\bit_buffer.h" />
     <ClInclude Include="game\classes\client_class.h" />
     <ClInclude Include="game\classes\convar.h" />
+    <ClInclude Include="game\classes\event_info.h" />
     <ClInclude Include="game\classes\models.h" />
     <ClInclude Include="game\classes\entities.h" />
     <ClInclude Include="game\classes\recv_props.h" />
@@ -277,6 +279,7 @@
     <ClInclude Include="game\interfaces\game_event.h" />
     <ClInclude Include="game\interfaces\globals.h" />
     <ClInclude Include="cluster\math\math.h" />
+    <ClInclude Include="game\interfaces\input.h" />
     <ClInclude Include="game\interfaces\material.h" />
     <ClInclude Include="game\interfaces\model_render.h" />
     <ClInclude Include="game\interfaces\panel.h" />
@@ -290,6 +293,8 @@
     <ClInclude Include="cluster\hasher\hasher.h" />
     <ClInclude Include="cluster\view_matrix\view_matrix.h" />
     <ClInclude Include="cluster\globals\globals.h" />
+    <ClInclude Include="cluster\features\implementations\thirdperson.h" />
+    <ClInclude Include="game\interfaces\trace.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

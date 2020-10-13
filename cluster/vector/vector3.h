@@ -55,6 +55,16 @@ public:
 		return { x - other.x, y - other.y, z - other.z };
 	}
 
+	auto operator-(const vector3_t& other) const -> vector3_t {
+		auto buf = *this;
+
+		buf.x -= other.x;
+		buf.y -= other.y;
+		buf.z -= other.z;
+
+		return buf;
+	}
+
 	inline vector3_t operator*(float fl) {
 		return { x * fl, y * fl, z * fl };
 	}
@@ -91,6 +101,14 @@ public:
 
 	inline float length_2d() {
 		return sqrt((x * x) + (y * y));
+	}
+
+	inline float length_squared() {
+		auto square = [](float n) {
+			return static_cast<float>(n * n);
+		};
+
+		return (square(x) + square(y) + square(z));
 	}
 
 	inline float dot(const float* other) {

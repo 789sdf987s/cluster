@@ -25,13 +25,13 @@ bool c_interfaces::capture_all() {
 
 	g_console.message("captured globals from client.dll");
 
-	std::optional<std::uint8_t*> client_state_signature = g_utilities.signature_scan("engine.dll", "A1 ? ? ? ? 8B 80 ? ? ? ? C3");
-	if (!client_state_signature.has_value()) {
+	std::uint8_t* client_state_signature = g_utilities.signature_scan("engine.dll", "A1 ? ? ? ? 8B 80 ? ? ? ? C3");
+	if (!client_state_signature) {
 		g_console.error("failed to capture client_state from engine.dll");
 		return false;
 	}
 
-	client_state = **reinterpret_cast<i_client_state***>(client_state_signature.value() + 1);
+	client_state = **reinterpret_cast<i_client_state***>(client_state_signature + 1);
 	if (!client_state) {
 		g_console.error("failed to capture client_state from engine.dll");
 		return false;
@@ -87,13 +87,23 @@ bool c_interfaces::capture_all() {
 
 	player = g_utilities.signature_scan("client.dll", "55 8B EC 83 E4 F8 83 EC 18 56 57 8B F9 89 7C 24 0C");
 	if (!player) {
-		g_console.error("failed to capture player");
+		g_console.error("failed to capture player from client.dll");
 		return false;
 	}
 
 	player += 0x47;
 
 	g_console.message("captured player");
+
+	input = *reinterpret_cast<i_input**>(g_utilities.signature_scan("client.dll", "B9 ? ? ? ? F3 0F 11 04 24 FF 50 10") + 1);
+	if (!player) {
+		g_console.error("failed to capture input from client.dll");
+		return false;
+	}
+
+	trace = this->capture_interface<i_trace>("engine.dll", "EngineTraceClient004");
+	if (!trace)
+		return false;
 
 	return true;
 }

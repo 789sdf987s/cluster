@@ -3,8 +3,7 @@
 THREAD_FUNCTION c_cluster::load(void* parameter) {
 	g_cluster.module_handle = static_cast<HMODULE>(parameter);
 
-	if (!g_console.create_console("cluster"))
-		g_utilities.critical_error("failed to create console");
+	g_console.create_console("cluster");
 
 	g_console.special("loading cluster, built at %s on %s", g_string_utilities.to_lower(__DATE__).c_str(), g_string_utilities.to_lower(__TIME__).c_str());
 	g_utilities.wait_for_modules({ "client.dll", "serverbrowser.dll", "d3d9.dll", "engine.dll", "materialsystem.dll", "panorama.dll", "vgui2.dll" });

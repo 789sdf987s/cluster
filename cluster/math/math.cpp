@@ -40,4 +40,15 @@ bool c_math::screen_transform(const vector3_t& world, vector3_t& screen) {
 	return true;
 }
 
+void c_math::angle_vectors(const vector3_t& angle, vector3_t& out) {
+	vector3_t sine, cosine;
+
+	sin_cos(DEG_2_RAD(angle.x), sine.x, cosine.x);
+	sin_cos(DEG_2_RAD(angle.y), sine.y, cosine.y);
+
+	out.x = cosine.x * cosine.y;
+	out.y = cosine.x * sine.y;
+	out.z = -sine.x;
+}
+
 c_math g_math;

@@ -13,10 +13,10 @@ public:
 		return !*string ? value : hash_const(&string[1], (value ^ std::uint32_t(string[0])) * prime);
 	}
 
-	inline const std::uint32_t hash(const std::string& string) {
+	inline const std::uint32_t hash(const char* string) {
 		std::uint32_t hashed = basis;
 
-		for (std::size_t i = 0U; i < string.length(); ++i) {
+		for (std::size_t i = 0U; i < strlen(string); ++i) {
 			hashed ^= string[i];
 			hashed *= prime;
 		}

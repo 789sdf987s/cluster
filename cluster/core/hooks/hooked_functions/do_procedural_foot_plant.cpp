@@ -4,5 +4,5 @@ void __fastcall c_hooks::c_do_procedural_foot_plant::hook(REGISTERS, int a1, int
 	if (g_hooks.is_unhooking)
 		return original(ecx, edx, a1, a2, a3, a4);
 
-	return original(ecx, edx, a1, a2, a3, a4);
+	return;
 }
