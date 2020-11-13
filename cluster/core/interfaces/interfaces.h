@@ -42,24 +42,24 @@ public:
 	i_trace* trace;
 
 
-	bool capture_all();
+	bool capture_all( );
 
 	template <typename type>
-	type* capture_interface(const std::string& module_name, const std::string& interface_name) {
-		std::optional<HMODULE> optional_module_handle = g_module_manager.get_handle(module_name);
-		if (!optional_module_handle.has_value())
+	type* capture_interface( const std::string& module_name, const std::string& interface_name ) {
+		std::optional<HMODULE> optional_module_handle = g_module_manager.get_handle( module_name );
+		if ( !optional_module_handle.has_value( ) )
 			return nullptr;
 
-		using create_interface_fn = void* (*)(const char*, int*);
-		const create_interface_fn create_interface = reinterpret_cast<create_interface_fn>(GetProcAddress(optional_module_handle.value(), "CreateInterface"));
+		using create_interface_fn = void* ( * )( const char*, int* );
+		const create_interface_fn create_interface = reinterpret_cast< create_interface_fn >( GetProcAddress( optional_module_handle.value( ), "CreateInterface" ) );
 
-		if (!create_interface) {
-			g_console.error("failed to capture %s from %s", g_string_utilities.to_lower(interface_name).c_str(), g_string_utilities.to_lower(module_name.c_str()).c_str());
+		if ( !create_interface ) {
+			g_console.error( "failed to capture %s from %s", g_string_utilities.to_lower( interface_name ).c_str( ), g_string_utilities.to_lower( module_name.c_str( ) ).c_str( ) );
 			return nullptr;
 		}
 
-		g_console.message("captured %s from %s", g_string_utilities.to_lower(interface_name).c_str(), g_string_utilities.to_lower(module_name).c_str());
-		return static_cast<type*>(create_interface(interface_name.c_str(), nullptr));
+		g_console.message( "captured %s from %s", g_string_utilities.to_lower( interface_name ).c_str( ), g_string_utilities.to_lower( module_name ).c_str( ) );
+		return static_cast< type* >( create_interface( interface_name.c_str( ), nullptr ) );
 	}
 
 

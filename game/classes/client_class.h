@@ -3,8 +3,8 @@
 
 class i_client_networkable;
 
-typedef i_client_networkable* (*create_client_class_fn)(int ent_number, int serial_number);
-typedef i_client_networkable* (*create_event_fn)();
+typedef i_client_networkable* ( *create_client_class_fn )( int ent_number, int serial_number );
+typedef i_client_networkable* ( *create_event_fn )( );
 
 enum class_ids {
 	cai_basenpc,

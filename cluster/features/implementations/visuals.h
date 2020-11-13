@@ -15,15 +15,15 @@ public:
 
 class c_visuals {
 public:
-	void populate_render_list();
+	void populate_render_list( );
 
 private:
 	player_t* player;
 
-	const color_t scale_color(const color_t& color);
-	bool calculate_box(box_t& box);
-	void render_box(box_t& box);
-	void render_name(box_t& box, player_info_t& info);
-	void render_flags(box_t& box, player_info_t& info);
-	void render_health(box_t& box);
+	const color_t scale_color( const color_t& color );
+	bool calculate_box( box_t& box );
+	void render_box( box_t& box );
+	void render_name( box_t& box, player_info_t& info );
+	void render_flags( box_t& box, player_info_t& info );
+	void render_health( box_t& box );
 };

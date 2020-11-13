@@ -5,6 +5,6 @@
 
 class c_thirdperson {
 public:
-	void on_override_view();
+	void on_override_view( );
 };
 

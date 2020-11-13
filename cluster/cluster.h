@@ -11,8 +11,8 @@ public:
 	bool is_hooked;
 	HMODULE module_handle;
 
-	static THREAD_FUNCTION load(void* parameter);
-	void unload();
+	static THREAD_FUNCTION load( void* parameter );
+	void unload( );
 };
 
 extern c_cluster g_cluster;

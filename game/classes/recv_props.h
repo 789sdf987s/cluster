@@ -5,9 +5,9 @@ class c_recv_table;
 class c_recv_prop;
 class c_recv_proxy_data;
 
-using recv_var_proxy_fn = void(*)(const c_recv_proxy_data* data, void* struct_ptr, void* out_ptr);
-using array_length_recv_proxy_fn = void(*)(void* struct_ptr, int object_id, int current_array_length);
-using data_table_recv_var_proxy_fn = void(*)(const c_recv_prop* prop, void** out_ptr, void* data_ptr, int object_id);
+using recv_var_proxy_fn = void( * )( const c_recv_proxy_data* data, void* struct_ptr, void* out_ptr );
+using array_length_recv_proxy_fn = void( * )( void* struct_ptr, int object_id, int current_array_length );
+using data_table_recv_var_proxy_fn = void( * )( const c_recv_prop* prop, void** out_ptr, void* data_ptr, int object_id );
 
 enum e_send_prop_type {
 	_int = 0,
@@ -27,7 +27,7 @@ public:
 		long m_int;
 		char* m_string;
 		void* m_data;
-		float m_vector[3];
+		float m_vector [ 3 ];
 		__int64 m_int64;
 	};
 

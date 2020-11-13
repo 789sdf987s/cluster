@@ -9,15 +9,15 @@ public:
 	static constexpr std::uint32_t basis = 0x811C9DC5;
 	static constexpr std::uint32_t prime = 0x1000193;
 
-	constexpr std::uint32_t hash_const(const char* string, const std::uint32_t value = basis) noexcept {
-		return !*string ? value : hash_const(&string[1], (value ^ std::uint32_t(string[0])) * prime);
+	constexpr std::uint32_t hash_const( const char* string, const std::uint32_t value = basis ) noexcept {
+		return !*string ? value : hash_const( &string [ 1 ], ( value ^ std::uint32_t( string [ 0 ] ) ) * prime );
 	}
 
-	inline const std::uint32_t hash(const char* string) {
+	inline const std::uint32_t hash( const char* string ) {
 		std::uint32_t hashed = basis;
 
-		for (std::size_t i = 0U; i < strlen(string); ++i) {
-			hashed ^= string[i];
+		for ( std::size_t i = 0U; i < strlen( string ); ++i ) {
+			hashed ^= string [ i ];
 			hashed *= prime;
 		}
 

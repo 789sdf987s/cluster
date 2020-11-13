@@ -93,12 +93,12 @@ typedef struct {
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+	#endif
 
 	/* __cdecl */
-	unsigned int hde32_disasm(const void* code, hde32s* hs);
+	unsigned int hde32_disasm( const void* code, hde32s* hs );
 
-#ifdef __cplusplus
+	#ifdef __cplusplus
 }
 #endif
 

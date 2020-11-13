@@ -10,8 +10,8 @@ public:
 		bool box;
 	} visuals;
 
-	bool save(const std::string file_name);
-	bool load(const std::string file_name);
+	bool save( const std::string file_name );
+	bool load( const std::string file_name );
 };
 
 extern c_config_system g_config_system;

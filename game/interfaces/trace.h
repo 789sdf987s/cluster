@@ -102,10 +102,10 @@ class player_t;
 #define MASK_NPCWORLDSTATIC		(CONTENTS_SOLID|CONTENTS_WINDOW|CONTENTS_MONSTERCLIP|CONTENTS_GRATE)
 #define MASK_SPLITAREAPORTAL	(CONTENTS_WATER|CONTENTS_SLIME)
 
-class __declspec(align(16)) vector3_aligned : public vector3_t {
+class __declspec( align( 16 ) ) vector3_aligned : public vector3_t {
 public:
-	vector3_aligned& operator=(const vector3_t& other) {
-		init(other.x, other.y, other.z);
+	vector3_aligned& operator=( const vector3_t& other ) {
+		init( other.x, other.y, other.z );
 		return *this;
 	}
 };
@@ -120,9 +120,9 @@ public:
 	bool is_ray;
 	bool is_swept;
 
-	ray_t(const vector3_t& start, const vector3_t& end) {
+	ray_t( const vector3_t& start, const vector3_t& end ) {
 		delta = end - start;
-		is_swept = (delta.length_squared() != 0);
+		is_swept = ( delta.length_squared( ) != 0 );
 
 		extents.x = extents.y = extents.z = 0.0f;
 		is_ray = true;
@@ -131,19 +131,19 @@ public:
 		this->start = start;
 	}
 
-	ray_t(vector3_t& start, vector3_t& end, vector3_t min, vector3_t max) {
+	ray_t( vector3_t& start, vector3_t& end, vector3_t min, vector3_t max ) {
 		delta = end - start;
 
-		is_swept = (delta.length_squared() != 0);
+		is_swept = ( delta.length_squared( ) != 0 );
 
-		extents.x = (max.x - min.x);
-		extents.y = (max.y - min.y);
-		extents.z = (max.z - min.z);
+		extents.x = ( max.x - min.x );
+		extents.y = ( max.y - min.y );
+		extents.z = ( max.z - min.z );
 		is_ray = false;
 
 		start_offset.x = start_offset.y = start_offset.z = 0.0f;
 
-		this->start = start + ((max + min) * 0.5f);
+		this->start = start + ( ( max + min ) * 0.5f );
 	}
 };
 
@@ -158,7 +158,7 @@ struct plane_t {
 	float dist;
 	BYTE type;
 	BYTE sign_bits;
-	BYTE pad[2];
+	BYTE pad [ 2 ];
 };
 
 struct trace_t {
@@ -177,16 +177,16 @@ struct trace_t {
 	player_t* entity;
 	int hitbox;
 
-	bool did_hit() const {
+	bool did_hit( ) const {
 		return fraction < 1.f;
 	}
 
-	bool did_hit_world() const {
+	bool did_hit_world( ) const {
 		return false;
 	}
 
-	bool did_hit_non_world_entity() const {
-		return entity != NULL && !did_hit_world();
+	bool did_hit_non_world_entity( ) const {
+		return entity != NULL && !did_hit_world( );
 	}
 };
 
@@ -199,17 +199,17 @@ enum trace_type_t {
 
 class i_trace_filter {
 public:
-	virtual bool should_hit_entity(void* entity, int contents_mask) = 0;
-	virtual trace_type_t get_trace_type() const = 0;
+	virtual bool should_hit_entity( void* entity, int contents_mask ) = 0;
+	virtual trace_type_t get_trace_type( ) const = 0;
 };
 
 class c_trace_filter_skip_all : public i_trace_filter {
 public:
-	bool should_hit_entity(void* entity_handle, int contents_mask) {
+	bool should_hit_entity( void* entity_handle, int contents_mask ) {
 		return false;
 	}
 
-	trace_type_t get_trace_type() const {
+	trace_type_t get_trace_type( ) const {
 		return TRACE_EVERYTHING;
 	}
 };
@@ -218,11 +218,11 @@ class c_trace_filter : public i_trace_filter {
 public:
 	void* skip;
 
-	bool should_hit_entity(void* entity_handle, int contents_mask) {
+	bool should_hit_entity( void* entity_handle, int contents_mask ) {
 		return entity_handle != skip;
 	}
 
-	trace_type_t get_trace_type() const {
+	trace_type_t get_trace_type( ) const {
 		return TRACE_EVERYTHING;
 	}
 };
@@ -231,11 +231,11 @@ class c_trace_filter_one_entity : public i_trace_filter {
 public:
 	void* entity;
 
-	bool should_hit_entity(void* entity_handle, int contents_mask) {
-		return (entity_handle == entity);
+	bool should_hit_entity( void* entity_handle, int contents_mask ) {
+		return ( entity_handle == entity );
 	}
 
-	trace_type_t get_trace_type() const {
+	trace_type_t get_trace_type( ) const {
 		return TRACE_EVERYTHING;
 	}
 };
@@ -244,11 +244,11 @@ class c_trace_filter_one_entity2 : public i_trace_filter {
 public:
 	void* entity;
 
-	bool should_hit_entity(void* entity_handle, int contents_mask) {
-		return (entity_handle == entity);
+	bool should_hit_entity( void* entity_handle, int contents_mask ) {
+		return ( entity_handle == entity );
 	}
 
-	trace_type_t get_trace_type() const {
+	trace_type_t get_trace_type( ) const {
 		return TRACE_ENTITIES_ONLY;
 	}
 };
@@ -258,16 +258,16 @@ public:
 	void* pass_entity1;
 	void* pass_entity2;
 
-	c_trace_filter_skip_two_entities(void* pass_entity1, void* pass_entity2) {
+	c_trace_filter_skip_two_entities( void* pass_entity1, void* pass_entity2 ) {
 		pass_entity1 = pass_entity1;
 		pass_entity2 = pass_entity2;
 	}
 
-	virtual bool should_hit_entity(void* entity_handle, int contents_mask) {
-		return !(entity_handle == pass_entity1 || entity_handle == pass_entity2);
+	virtual bool should_hit_entity( void* entity_handle, int contents_mask ) {
+		return !( entity_handle == pass_entity1 || entity_handle == pass_entity2 );
 	}
 
-	virtual trace_type_t GetTraceType() const {
+	virtual trace_type_t GetTraceType( ) const {
 		return TRACE_EVERYTHING;
 	}
 };
@@ -276,15 +276,15 @@ class c_trace_filter_skip_one_entity : public i_trace_filter {
 public:
 	void* pass_entity1;
 
-	c_trace_filter_skip_one_entity(void* pass_entity1) {
+	c_trace_filter_skip_one_entity( void* pass_entity1 ) {
 		this->pass_entity1 = pass_entity1;
 	}
 
-	virtual bool should_hit_entity(void* entity_handle, int contents_mask) {
-		return !(entity_handle == pass_entity1);
+	virtual bool should_hit_entity( void* entity_handle, int contents_mask ) {
+		return !( entity_handle == pass_entity1 );
 	}
 
-	virtual trace_type_t get_trace_type() const {
+	virtual trace_type_t get_trace_type( ) const {
 		return TRACE_EVERYTHING;
 	}
 };
@@ -293,11 +293,11 @@ class c_trace_entity : public i_trace_filter {
 public:
 	void* skip1;
 
-	bool should_hit_entity(void* entity_handle, int contents_mask) {
-		return !(entity_handle == skip1);
+	bool should_hit_entity( void* entity_handle, int contents_mask ) {
+		return !( entity_handle == skip1 );
 	}
 
-	trace_type_t get_trace_type() const {
+	trace_type_t get_trace_type( ) const {
 		return TRACE_ENTITIES_ONLY;
 	}
 };
@@ -306,11 +306,11 @@ class c_trace_world_only : public i_trace_filter {
 public:
 	void* skip1;
 
-	bool should_hit_entity(void* entity_handle, int contents_mask) {
+	bool should_hit_entity( void* entity_handle, int contents_mask ) {
 		return false;
 	}
 
-	trace_type_t get_trace_type() const {
+	trace_type_t get_trace_type( ) const {
 		return TRACE_EVERYTHING;
 	}
 };
@@ -318,10 +318,10 @@ public:
 class collideable_t;
 class i_trace {
 public:
-	virtual int get_point_contents(const vector3_t& pos, int mask = MASK_ALL, void** ent = nullptr) = 0;
-	virtual int get_point_contents_world(const vector3_t& pos, int mask = MASK_ALL) = 0;
-	virtual int get_point_contents_collideable(collideable_t* collide, const vector3_t& pos) = 0;
-	virtual void clip_ray_to_entity(const ray_t& ray, unsigned int mask, player_t* ent, trace_t* trace) = 0;
-	virtual void clip_ray_to_collideable(const ray_t& ray, unsigned int mask, collideable_t* collide, trace_t* trace) = 0;
-	virtual void trace_ray(const ray_t& ray, unsigned int mask, i_trace_filter* filter, trace_t* trace) = 0;
+	virtual int get_point_contents( const vector3_t& pos, int mask = MASK_ALL, void** ent = nullptr ) = 0;
+	virtual int get_point_contents_world( const vector3_t& pos, int mask = MASK_ALL ) = 0;
+	virtual int get_point_contents_collideable( collideable_t* collide, const vector3_t& pos ) = 0;
+	virtual void clip_ray_to_entity( const ray_t& ray, unsigned int mask, player_t* ent, trace_t* trace ) = 0;
+	virtual void clip_ray_to_collideable( const ray_t& ray, unsigned int mask, collideable_t* collide, trace_t* trace ) = 0;
+	virtual void trace_ray( const ray_t& ray, unsigned int mask, i_trace_filter* filter, trace_t* trace ) = 0;
 };

@@ -17,14 +17,14 @@
 
 class c_menu {
 public:
-	void create_context();
-	void set_style();
-	void impl_init(HWND hwnd, IDirect3DDevice9* device);
-	void new_frame();
-	void populate_render_list();
-	void end_frame_and_render();
-	void pre_reset();
-	void post_reset();
-	void shutdown();
+	void create_context( );
+	void set_style( );
+	void impl_init( HWND hwnd, IDirect3DDevice9* device );
+	void new_frame( );
+	void populate_render_list( );
+	void end_frame_and_render( );
+	void pre_reset( );
+	void post_reset( );
+	void shutdown( );
 	bool is_open;
 };

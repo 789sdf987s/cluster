@@ -4,9 +4,9 @@
 
 class c_string_utilities {
 public:
-	inline std::string to_lower(std::string str) {
-		std::transform(str.begin(), str.end(), str.begin(),
-			[](unsigned char c) { return std::tolower(c); });
+	inline std::string to_lower( std::string str ) {
+		std::transform( str.begin( ), str.end( ), str.begin( ),
+			[ ] ( unsigned char c ) { return std::tolower( c ); } );
 
 		return str;
 	}

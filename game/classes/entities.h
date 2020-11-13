@@ -30,49 +30,49 @@
 
 class entity_t {
 public:
-	INTERNAL_RELATIVE_OFFSET(void*, 0x8, networkable);
-	RELATIVE_OFFSET(matrix_t, 0x444, coordinate_frame);
-	INTERNAL_RELATIVE_OFFSET(void*, 0x8, animating);
-	INDEX_FROM(networkable(), 9, bool, is_dormant);
-	INDEX_FROM(networkable(), 10, int, index);
-	INDEX_FROM(this, 157, bool, is_player);
-	INDEX_FROM(this, 165, bool, is_weapon);
-	NETVAR(BASE_ENTITY, "m_vecMins", mins, vector3_t);
-	NETVAR(BASE_ENTITY, "m_vecMaxs", maxs, vector3_t);
-	NETVAR(BASE_PLAYER, "m_vecOrigin", origin, vector3_t);
-	NETVAR(BASE_ENTITY, "m_bSpotted", is_spotted, bool);
-	NETVAR(BASE_PLAYER, "m_vecViewOffset[0]", view_offset, vector3_t);
-	NETVAR(BASE_PLAYER, "m_vecVelocity[0]", velocity, vector3_t);
-	NETVAR(BASE_PLAYER, "m_aimPunchAngle", aim_punch_angle, vector3_t);
-	NETVAR(BASE_PLAYER, "m_viewPunchAngle", view_punch_angle, vector3_t);
-	NETVAR(BASE_ENTITY, "m_fEffects", effects, int);
+	INTERNAL_RELATIVE_OFFSET( void*, 0x8, networkable );
+	RELATIVE_OFFSET( matrix_t, 0x444, coordinate_frame );
+	INTERNAL_RELATIVE_OFFSET( void*, 0x8, animating );
+	INDEX_FROM( networkable( ), 9, bool, is_dormant );
+	INDEX_FROM( networkable( ), 10, int, index );
+	INDEX_FROM( this, 157, bool, is_player );
+	INDEX_FROM( this, 165, bool, is_weapon );
+	NETVAR( BASE_ENTITY, "m_vecMins", mins, vector3_t );
+	NETVAR( BASE_ENTITY, "m_vecMaxs", maxs, vector3_t );
+	NETVAR( BASE_PLAYER, "m_vecOrigin", origin, vector3_t );
+	NETVAR( BASE_ENTITY, "m_bSpotted", is_spotted, bool );
+	NETVAR( BASE_PLAYER, "m_vecViewOffset[0]", view_offset, vector3_t );
+	NETVAR( BASE_PLAYER, "m_vecVelocity[0]", velocity, vector3_t );
+	NETVAR( BASE_PLAYER, "m_aimPunchAngle", aim_punch_angle, vector3_t );
+	NETVAR( BASE_PLAYER, "m_viewPunchAngle", view_punch_angle, vector3_t );
+	NETVAR( BASE_ENTITY, "m_fEffects", effects, int );
 
-	bool setup_bones(matrix_t* matrix, int max_bones, int mask, float setup_time) {
-		using original_fn = bool(__thiscall*)(void*, matrix_t*, int, int, float);
-		return (*(original_fn**)networkable())[13](networkable(), matrix, max_bones, mask, setup_time);
+	bool setup_bones( matrix_t* matrix, int max_bones, int mask, float setup_time ) {
+		using original_fn = bool( __thiscall* )( void*, matrix_t*, int, int, float );
+		return ( *( original_fn** ) networkable( ) ) [ 13 ]( networkable( ), matrix, max_bones, mask, setup_time );
 	}
 };
 
 class player_t : public entity_t {
 public:
-	INDEX_FROM(this, 10, vector3_t, abs_origin);
-	NETVAR(CS_PLAYER, "m_fFlags", flags, int);
-	NETVAR(CS_PLAYER, "m_flSimulationTime", simulation_time, float);
-	NETVAR(CS_PLAYER, "m_iTeamNum", team, int);
-	NETVAR(CS_PLAYER, "m_iHealth", health, int);
-	NETVAR(CS_PLAYER, "m_iAccount", money, int);
-	NETVAR(CS_PLAYER, "m_bIsScoped", is_scoped, bool);
-	NETVAR(CS_PLAYER, "m_bIsDefusing", is_defusing, bool);
-	NETVAR(CS_PLAYER, "m_bHasDefuser", has_defuser, bool);
-	NETVAR(CS_PLAYER, "m_ArmorValue", armor, int);
-	NETVAR(CS_PLAYER, "m_bHasHelmet", has_helmet, bool);
-	NETVAR(CS_PLAYER, "m_bGunGameImmunity", is_immune, bool);
-	NETVAR(CS_PLAYER, "m_nTickBase", tick_base, int);
-	NETVAR(CS_PLAYER, "m_flDuckAmount", duck_amount, float);
-	NETVAR(CS_PLAYER, "m_flLowerBodyYawTarget", lower_body_yaw_target, float);
-	NETVAR(CS_PLAYER, "m_angEyeAngles", eye_angles, vector3_t);
+	INDEX_FROM( this, 10, vector3_t, abs_origin );
+	NETVAR( CS_PLAYER, "m_fFlags", flags, int );
+	NETVAR( CS_PLAYER, "m_flSimulationTime", simulation_time, float );
+	NETVAR( CS_PLAYER, "m_iTeamNum", team, int );
+	NETVAR( CS_PLAYER, "m_iHealth", health, int );
+	NETVAR( CS_PLAYER, "m_iAccount", money, int );
+	NETVAR( CS_PLAYER, "m_bIsScoped", is_scoped, bool );
+	NETVAR( CS_PLAYER, "m_bIsDefusing", is_defusing, bool );
+	NETVAR( CS_PLAYER, "m_bHasDefuser", has_defuser, bool );
+	NETVAR( CS_PLAYER, "m_ArmorValue", armor, int );
+	NETVAR( CS_PLAYER, "m_bHasHelmet", has_helmet, bool );
+	NETVAR( CS_PLAYER, "m_bGunGameImmunity", is_immune, bool );
+	NETVAR( CS_PLAYER, "m_nTickBase", tick_base, int );
+	NETVAR( CS_PLAYER, "m_flDuckAmount", duck_amount, float );
+	NETVAR( CS_PLAYER, "m_flLowerBodyYawTarget", lower_body_yaw_target, float );
+	NETVAR( CS_PLAYER, "m_angEyeAngles", eye_angles, vector3_t );
 
-	vector3_t eye_position() {
-		return origin() + view_offset();
+	vector3_t eye_position( ) {
+		return origin( ) + view_offset( );
 	}
 };
