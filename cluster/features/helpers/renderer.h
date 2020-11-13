@@ -9,8 +9,6 @@
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 
-#define CS const short
-
 enum e_text_alignment : unsigned int {
 	DEFAULT = (1 << 0),
 	VERTICAL_TOP = (1 << 1),
@@ -32,7 +30,7 @@ public:
 	unsigned short width, height;
 
 	text_size_t() = default;
-	text_size_t(CS width, CS height) {
+	text_size_t(int width, int height) {
 		this->width = width;
 		this->height = height;
 	}
@@ -61,11 +59,11 @@ public:
 	void initialize(IDirect3DDevice9* device);
 	void setup_state();
 	void reset_state();
-	void render_rectangle(CS x, CS y, CS width, CS height, const color_t color);
-	void render_filled_rectangle(CS x, CS y, CS width, CS height, const color_t color);
-	void render_line(CS x, CS y, CS x2, CS y2, const color_t color);
-	text_size_t render_text(unsigned short x, unsigned short y, const unsigned int alignment, const e_text_flags flags, const std::string& str, ID3DXFont* font, color_t color);
-	void render_circle(CS x, CS y, CS radius, CS segments, const color_t color);
+	void render_rectangle(int x, int y, int width, int height, const color_t color);
+	void render_filled_rectangle(int x, int y, int width, int height, const color_t color);
+	void render_line(int x, int y, int x2, int y2, const color_t color);
+	text_size_t render_text(int x, int y, const unsigned int alignment, const e_text_flags flags, const std::string& str, ID3DXFont* font, color_t color);
+	void render_circle(int x, int y, int radius, int segments, const color_t color);
 	const text_size_t calculate_text_size(const std::string& str, ID3DXFont* font);
 };
 

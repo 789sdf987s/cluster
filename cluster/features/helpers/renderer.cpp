@@ -47,14 +47,14 @@ void c_renderer::reset_state() {
 	device->SetVertexShader(vertex_shader);
 }
 
-void c_renderer::render_rectangle(CS x, CS y, CS width, CS height, const color_t color) {
+void c_renderer::render_rectangle(int x, int y, int width, int height, const color_t color) {
 	render_filled_rectangle(x, y, width, 1, color);
 	render_filled_rectangle(x, y, 1, height, color);
 	render_filled_rectangle(x + width - 1, y, 1, height, color);
 	render_filled_rectangle(x, y + height - 1, width, 1, color);
 }
 
-void c_renderer::render_filled_rectangle(CS x, CS y, CS width, CS height, const color_t color) {
+void c_renderer::render_filled_rectangle(int x, int y, int width, int height, const color_t color) {
 	const vertex_t vertices[] = {
 		{ x, y, color },
 		{ x + width, y, color },
@@ -66,7 +66,7 @@ void c_renderer::render_filled_rectangle(CS x, CS y, CS width, CS height, const 
 	device->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(vertex_t));
 }
 
-void c_renderer::render_line(CS x, CS y, CS x2, CS y2, const color_t color) {
+void c_renderer::render_line(int x, int y, int x2, int y2, const color_t color) {
 	const vertex_t vertices[] = {
 		{ x, y, color },
 		{ x2, y2, color },
@@ -76,11 +76,11 @@ void c_renderer::render_line(CS x, CS y, CS x2, CS y2, const color_t color) {
 	device->DrawPrimitiveUP(D3DPT_LINELIST, 1, vertices, sizeof(vertex_t));
 }
 
-text_size_t c_renderer::render_text(unsigned short x, unsigned short y, const unsigned int alignment, const e_text_flags flags, const std::string& str, ID3DXFont* font, color_t color) {
+text_size_t c_renderer::render_text(int x, int y, const unsigned int alignment, const e_text_flags flags, const std::string& str, ID3DXFont* font, color_t color) {
 	RECT rect = { 0, 0, 0, 0 };
 	const text_size_t text_size = calculate_text_size(str, font);
 	const auto draw_text = [text_size, alignment, flags, str, font](RECT& rect, color_t& color, unsigned short x, unsigned short y) {
-		const auto set_rect = [](RECT& rect, CS x, CS y) {
+		const auto set_rect = [](RECT& rect, int x, int y) {
 			SetRect(&rect, x, y, x, y);
 		};
 
@@ -149,7 +149,7 @@ text_size_t c_renderer::render_text(unsigned short x, unsigned short y, const un
 	return text_size;
 }
 
-void c_renderer::render_circle(CS x, CS y, CS radius, CS segments, const color_t color) {
+void c_renderer::render_circle(int x, int y, int radius, int segments, const color_t color) {
 	vertex_t* vertices = new vertex_t[segments + 1];
 
 	for (int i = 0; i <= segments; i++) {

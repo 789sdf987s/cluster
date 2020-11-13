@@ -120,7 +120,7 @@ public:
 	bool is_ray;
 	bool is_swept;
 
-	ray_t(vector3_t& start, const vector3_t& end) {
+	ray_t(const vector3_t& start, const vector3_t& end) {
 		delta = end - start;
 		is_swept = (delta.length_squared() != 0);
 
@@ -203,6 +203,17 @@ public:
 	virtual trace_type_t get_trace_type() const = 0;
 };
 
+class c_trace_filter_skip_all : public i_trace_filter {
+public:
+	bool should_hit_entity(void* entity_handle, int contents_mask) {
+		return false;
+	}
+
+	trace_type_t get_trace_type() const {
+		return TRACE_EVERYTHING;
+	}
+};
+
 class c_trace_filter : public i_trace_filter {
 public:
 	void* skip;
@@ -266,11 +277,11 @@ public:
 	void* pass_entity1;
 
 	c_trace_filter_skip_one_entity(void* pass_entity1) {
-		pass_entity1 = pass_entity1;
+		this->pass_entity1 = pass_entity1;
 	}
 
-	virtual bool should_hit_entity(void* pEntityHandle, int contentsMask) {
-		return !(pEntityHandle == pass_entity1);
+	virtual bool should_hit_entity(void* entity_handle, int contents_mask) {
+		return !(entity_handle == pass_entity1);
 	}
 
 	virtual trace_type_t get_trace_type() const {

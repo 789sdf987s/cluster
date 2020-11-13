@@ -71,4 +71,8 @@ public:
 	NETVAR(CS_PLAYER, "m_flDuckAmount", duck_amount, float);
 	NETVAR(CS_PLAYER, "m_flLowerBodyYawTarget", lower_body_yaw_target, float);
 	NETVAR(CS_PLAYER, "m_angEyeAngles", eye_angles, vector3_t);
+
+	vector3_t eye_position() {
+		return origin() + view_offset();
+	}
 };
